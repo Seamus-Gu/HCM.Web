@@ -1,0 +1,10 @@
+.s-switch {
+  .el-switch.is-checked .el-switch__core {
+    border-color: var(--switch-on-color);
+    background-color: var(--switch-on-color);
+  }
+}
+
+.s-switch {
+  --switch-on-color: var(--color-primary-core);
+}

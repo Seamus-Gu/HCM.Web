@@ -1,0 +1,49 @@
+.s-upload-button {
+  .button-container {
+    .file-input {
+      display: none;
+    }
+  }
+}
+
+.s-upload-container {
+  .s-upload-text {
+    color: var(--el-text-color-regular);
+    span {
+      color: var(--color-primary-core);
+    }
+  }
+  .el-upload:focus .el-upload-dragger,
+  .el-upload-dragger:hover {
+    border-color: var(--color-primary-core);
+  }
+}
+
+.s-upload-image {
+  .image-contont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hide .el-upload--picture-card {
+    display: none;
+  }
+}
+
+// #region 全局
+
+.el-upload-dragger {
+  border: none !important;
+}
+
+.el-upload:focus,
+.el-upload--picture-card:hover,
+.el-upload-list__item.is-success .el-upload-list__item-name:focus,
+.el-upload-list__item.is-success .el-upload-list__item-name:hover {
+  color: var(--color-primary-core) !important;
+}
+
+.el-upload--picture-card:hover {
+  border-color: var(--color-primary-core) !important;
+}
+//#endregion

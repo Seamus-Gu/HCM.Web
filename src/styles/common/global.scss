@@ -1,0 +1,22 @@
+// 鼠标显示 手指
+.cursor-pointer {
+  cursor: pointer;
+}
+
+// icon
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  overflow: hidden;
+  fill: currentColor;
+}
+
+.icon :hover {
+  // color: var(--el-color-primary);
+}
+
+.icon.is-loading {
+  -webkit-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}

@@ -1,0 +1,16 @@
+.s-tabs {
+  .el-tabs {
+    &__item.is-active {
+      color: var(--color-primary-core);
+    }
+    &__item:hover {
+      color: var(--color-primary-core);
+    }
+    &__active-bar {
+      background-color: var(--color-primary-core);
+    }
+    &__item:focus-visible {
+      box-shadow: none !important;
+    }
+  }
+}

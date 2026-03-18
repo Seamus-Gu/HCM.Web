@@ -1,0 +1,28 @@
+// @mixin important-text {
+//   color: red;
+//   font-size: 25px;
+//   font-weight: bold;
+//   border: 1px solid blue;
+// }
+
+// .danger {
+//   @include important-text;
+//   background-color: green;
+// }
+
+// .danger {
+//   color: red;
+//   font-size: 25px;
+//   font-weight: bold;
+//   border: 1px solid blue;
+//   background-color: green;
+// }
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.a {
+  color: #383838;
+}

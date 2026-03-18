@@ -1,0 +1,16 @@
+stages:
+  - build
+
+cache:
+  key: "$CI_COMMIT_REF_NAME"
+  paths:
+    - node_modules/
+
+production:
+  stage: build
+  script:
+    - pnpm install
+    - pnpm build
+    - xcopy "dist" "E:\Production\Seed Web" /E /H /C /I /Y
+  only:
+    - production

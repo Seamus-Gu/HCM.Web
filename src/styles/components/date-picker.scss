@@ -1,0 +1,58 @@
+.s-date-picker {
+  width: 100%;
+  .el-date-editor.el-input,
+  .el-date-editor.el-input__wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .el-icon {
+    width: 2em;
+  }
+  .el-input__wrapper.is-focus,
+  .el-range-editor.is-active {
+    box-shadow: 0 0 0 1px var(--input-focus-border-color) inset;
+    &:hover {
+      box-shadow: 0 0 0 1px var(--input-focus-border-color) inset;
+    }
+  }
+  .el-date-editor {
+    .el-range__close-icon {
+      width: 2em;
+    }
+  }
+}
+
+.s-date-picker {
+  --input-focus-border-color: var(--color-primary-core);
+}
+
+.el-popper {
+  .el-date-table td.today .el-date-table-cell__text {
+    color: var(--color-primary-core);
+  }
+  .el-date-table td.available:hover {
+    color: var(--color-primary-core);
+  }
+  .el-picker-panel__icon-btn:hover {
+    color: var(--color-primary-core);
+  }
+
+  .el-date-table td.end-date .el-date-table-cell__text,
+  .el-date-table td.start-date .el-date-table-cell__text,
+  .el-date-table td.current:not(.disabled) .el-date-table-cell__text {
+    background: var(--color-primary-core);
+  }
+}
+
+// #region 全局
+
+.el-date-picker__header-label:hover,
+.el-month-table td .cell:hover,
+.el-year-table td .cell:hover,
+.el-year-table td.today .cell {
+  color: var(--color-primary-core) !important;
+}
+.el-year-table td.current:not(.disabled) .cell {
+  background-color: var(--color-primary-core) !important;
+}
+// #endregion

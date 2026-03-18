@@ -1,0 +1,44 @@
+// #region css
+.s-input {
+  width: 100%;
+}
+
+.s-input-number {
+  width: 100%;
+  .el-input-number {
+    width: 100%;
+  }
+}
+// #endregion
+
+// #region 变量
+.s-input {
+  .el-textarea {
+    --el-input-focus-border-color: var(--color-primary-core);
+  }
+}
+
+.s-input-number {
+  .el-input {
+    --el-input-focus-border-color: var(--color-primary-core);
+  }
+}
+
+// #endregion
+
+// #region 全局
+
+.el-input-group__append,
+.el-input-group__prepend {
+  padding: 0 !important;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--input-foceus-boder-color) !important;
+}
+
+html {
+  --input-foceus-boder-color: var(--color-primary-5);
+}
+
+// #endregion

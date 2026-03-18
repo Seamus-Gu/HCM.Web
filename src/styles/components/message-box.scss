@@ -1,0 +1,23 @@
+.el-message-box__headerbtn:focus .el-message-box__close,
+.el-message-box__headerbtn:hover .el-message-box__close {
+  color: var(--color-primary-core) !important;
+}
+
+.el-message-box {
+  .el-button {
+    --el-button-hover-text-color: var(--color-primary-core);
+    --el-button-hover-border-color: var(--color-primary-4);
+    --el-button-hover-bg-color: var(--color-primary-1);
+    --el-button-active-border-color: var(--color-primary-7);
+  }
+
+  .el-button--primary {
+    --el-button-text-color: var(--el-color-white);
+    --el-button-bg-color: var(--color-primary-core);
+    --el-button-hover-text-color: var(--el-color-white);
+    --el-button-hover-bg-color: var(--color-primary-5);
+    --el-button-hover-border-color: var(--color-primary-3);
+    --el-button-active-bg-color: var(--color-primary-7);
+    --el-button-active-border-color: var(--color-primary-2);
+  }
+}

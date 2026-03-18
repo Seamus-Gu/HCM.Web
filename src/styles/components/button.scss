@@ -1,0 +1,232 @@
+.s-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  transition: 0.1s;
+  font-weight: var(--button-font-weight);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  background: var(--button-bg);
+  border: var(--button-border);
+  padding: 8px 15px;
+  font-size: var(--el-font-size-base);
+  border-radius: var(--el-border-radius-base);
+  box-shadow: var(--button-box-shadow);
+  overflow: hidden;
+  transition: background-color 0.25s;
+
+  &:hover {
+    color: var(--button-hover-text-color);
+    border-color: var(--button-hover-border-color);
+    background-color: var(--button-hover-bg-color);
+    box-shadow: var(--button-hover-box-shadow);
+    outline: 0;
+  }
+
+  &:active {
+    color: var(--button-avtive-text-color);
+    border-color: var(--button-avtive-border-color);
+    background-color: var(--button-avtive-bg-color);
+    outline: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, #ccc 10%, transparent 10.1%);
+    transform: scale(10);
+    opacity: 0;
+    transition: all 0.6s;
+  }
+
+  &:active::after {
+    transform: scale(0);
+    opacity: 0.5;
+    transition: 0s;
+  }
+
+  &--large {
+    height: 40px;
+    padding: 12px 19px;
+  }
+
+  &--small {
+    height: 24px;
+    padding: 5px 11px;
+  }
+}
+
+.is-circle {
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.color-button {
+  border: none;
+  &:active {
+    box-shadow: $button-color-active-shadow;
+    opacity: 0.85;
+  }
+}
+
+.is-link {
+  border-color: transparent;
+  color: var(--button-text-color);
+  background: transparent;
+  padding: 2px;
+  height: auto;
+}
+.is-link:hover {
+  color: var(--button-text-color);
+  box-shadow: none;
+  border-color: transparent;
+  background: transparent;
+  opacity: 0.6;
+}
+
+.is-disabled,
+.is-disabled:hover {
+  color: var(--button-disabled-text-color);
+  cursor: not-allowed;
+  background-color: var(--button-disable-bg-color);
+  border-color: var(--button-disabled-border-color);
+  box-shadow: none;
+}
+.is-disabled:active {
+  box-shadow: none;
+}
+.is-disabled:after {
+  content: none;
+}
+.color-button.is-disabled {
+  opacity: 0.5;
+}
+.is-link.is-disabled {
+  border-color: transparent;
+}
+
+.prepend {
+  margin-left: 6px;
+}
+.append {
+  margin-right: 6px;
+}
+
+.is-loading {
+  opacity: 0.8;
+  pointer-events: none;
+  .icon {
+    margin-right: 6px;
+  }
+}
+
+.s-button {
+  --button-text-color: var(--el-text-color-regular);
+  --button-font-weight: var(--el-font-weight-primary);
+  --button-bg: var(--el-fill-color-blank);
+  --button-border: var(--el-border-width) var(--el-border-style)
+    var(--el-border-color);
+  --button-hover-text-color: var(--color-primary-core);
+  --button-hover-border-color: var(--color-primary-2);
+  --button-hover-bg-color: var(--color-primary-0);
+  --button-avtive-text-color: var(--color-primary-core);
+  --button-avtive-border-color: var(--color-primary-4);
+  --button-avtive-bg-color: var(--color-primary-0);
+  --button-hover-box-shadow: none;
+  --button-disabled-text-color: var(--el-disabled-text-color);
+  --button-disable-bg-color: var(--el-fill-color-blank);
+  --button-disabled-border-color: var(--el-border-color-light);
+
+  &--primary {
+    --button-bg: var(--color-primary);
+    --button-hover-box-shadow: var(--color-primary-box-shadow);
+  }
+
+  &--success {
+    --button-bg: linear-gradient(195deg, rgb(160, 250, 120), rgb(60, 150, 70));
+    --button-hover-box-shadow: rgba(76, 175, 80, 0.4) 0 14px 26px -12px,
+      rgba(76, 175, 80, 0.15) 0 4px 23px 0,
+      rgba(76, 175, 80, 0.2) 0 8px 10px -5px;
+  }
+
+  &--info {
+    --button-bg: linear-gradient(
+      195deg,
+      rgb(230, 230, 240),
+      rgb(140, 150, 170)
+    );
+    --button-hover-box-shadow: rgba(130, 140, 140, 0.4) 0 14px 26px -12px,
+      rgba(130, 140, 140, 0.15) 0 4px 23px 0,
+      rgba(130, 140, 140, 0.2) 0 8px 10px -5px;
+  }
+
+  &--warning {
+    --button-bg: linear-gradient(195deg, rgb(245, 220, 200), rgb(250, 140, 0));
+    --button-hover-box-shadow: rgba(251, 140, 0, 0.4) 0 14px 26px -12px,
+      rgba(251, 140, 0, 0.15) 0 4px 23px 0,
+      rgba(251, 140, 0, 0.2) 0 8px 10px -5px;
+  }
+
+  &--danger {
+    --button-bg: linear-gradient(195deg, rgb(248, 160, 160), rgb(250, 0, 0));
+    --button-hover-box-shadow: rgba(244, 67, 53, 0.4) 0 14px 26px -12px,
+      rgba(244, 67, 53, 0.15) 0 4px 23px 0,
+      rgba(244, 67, 53, 0.2) 0 8px 10px -5px;
+  }
+}
+
+.color-button {
+  --button-text-color: var(--el-color-white);
+  --button-hover-text-color: var(--el-color-white);
+  --button-avtive-text-color: var(--el-color-white);
+  --button-disabled-text-color: var(--el-color-white);
+}
+
+.is-link {
+  // --button-hover-text-color: var(--color-primary-5);
+}
+.is-link.s-button {
+  &--primary {
+    --button-text-color: var(--color-primary-core);
+  }
+  &--success {
+    --button-text-color: #67c23a;
+  }
+  &--info {
+    --button-text-color: #909399;
+  }
+
+  &--warning {
+    --button-text-color: #e6a23c;
+  }
+
+  &--danger {
+    --button-text-color: #f56c6c;
+  }
+}
+
+.s-button + .s-button {
+  margin-left: 8px;
+}
+
+.el-button:focus-visible {
+  outline: none;
+}
