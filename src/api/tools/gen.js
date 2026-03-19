@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-const baseUrl = 'gen'
+const baseUrl = 'v1/gen'
 
 // 获取生成表列表
 export function getGenTableList(query) {
   return request({
-    url: baseUrl + '/table-list',
+    url: baseUrl + '/list',
     method: 'get',
     params: query
   })

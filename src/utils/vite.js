@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import autoImport from 'unplugin-auto-import/vite'
 import { viteMockServe } from 'vite-plugin-mock'
-import { createSvgIconsPlugin} from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 export function createVitePlugins(viteEnv) {

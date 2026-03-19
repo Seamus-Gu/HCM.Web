@@ -5,7 +5,7 @@
         <el-row :gutter="20" align="middle">
           <el-col :span="1">
             <el-avatar :src="avatar">
-              {{ nickName.substring(0, 1) }}
+              <!-- {{ nickName.substring(0, 1) }} -->
             </el-avatar>
           </el-col>
           <el-col :span="12">

@@ -1,11 +1,6 @@
 import request from '@/utils/request'
 const baseUrl = '/system/dictionary/item'
 
-/**
- * @description:获取字典项列表
- * @param {*} query
- * @return {*}
- */
 export function getDictItemList(query) {
   return request({
     url: baseUrl + '/list',

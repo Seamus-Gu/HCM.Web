@@ -24,7 +24,8 @@ export default {
 
     const avatarData = reactive({
       avatar: computed(() => userStore.avatar),
-      nickNameAvatar: computed(() => userStore.nickName).value.substring(0, 1),
+      nickNameAvatar: 'zxc',
+      // nickNameAvatar: computed(() => userStore.nickName).value.substring(0, 1),
       settingVisible: false
     })
 

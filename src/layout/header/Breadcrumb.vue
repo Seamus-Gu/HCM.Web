@@ -3,8 +3,8 @@
     <el-breadcrumb separator="/">
       <el-breadcrumb-item>
         <router-link to="/index">
-          <svg class="icon" ariel-hidden="true" font-size="12px">
-            <use xlink:href="#icon-home2" />
+          <svg class="icon" ariel-hidden="true" font-size="14px">
+            <use xlink:href="#icon-home" />
           </svg>
         </router-link>
       </el-breadcrumb-item>

@@ -4,7 +4,10 @@
       class="icon"
       ariel-hidden="true"
       font-size="20px"
-      :style="{ transform: isActive ? 'none' : 'rotateY(180deg)' }"
+      :style="{
+        transform: isActive ? 'none' : 'rotateY(180deg)',
+        color: 'var(--el-text-color-primary)'
+      }"
     >
       <use xlink:href="#icon-shrink" />
     </svg>

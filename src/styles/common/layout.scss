@@ -127,6 +127,9 @@
       display: flex;
       margin-bottom: 4px;
     }
+    .header-item {
+      color: var(--el-text-color-primary);
+    }
   }
   .layout-header.header-fixed {
     background-color: transparent;

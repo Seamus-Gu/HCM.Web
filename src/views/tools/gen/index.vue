@@ -72,7 +72,7 @@
 </template>
 <script setup>
 import dayjs from 'dayjs'
-import { getGenTableList, removeGenTable } from '@/api/tool/gen'
+import { getGenTableList, removeGenTable } from '@/api/tools/gen'
 
 const querySchema = [
   {

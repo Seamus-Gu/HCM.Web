@@ -30,7 +30,7 @@
               @click="showSetting"
             >
               <svg class="icon" ariel-hidden="true" font-size="20px">
-                <use xlink:href="#icon-setting-config" />
+                <use xlink:href="#icon-theme" />
               </svg>
             </div>
             <div v-if="noticeSwitch" class="header-item cursor-pointer">
