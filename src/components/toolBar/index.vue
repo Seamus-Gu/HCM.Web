@@ -94,9 +94,9 @@
               <svg
                 class="icon cursor-pointer"
                 ariel-hidden="true"
-                font-size="20px"
+                font-size="22px"
               >
-                <use xlink:href="#icon-column-setting" />
+                <use xlink:href="#icon-set" />
               </svg>
             </div>
           </el-tooltip>

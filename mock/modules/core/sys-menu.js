@@ -111,14 +111,14 @@ const menuRoutes = [
   },
   {
     name: 'Components',
-    path: '//components',
+    path: '/components',
     hidden: false,
     redirect: 'noRedirect',
     component: 'Layout',
     alwaysShow: true,
     meta: {
       title: '组件',
-      icon: 'guide',
+      icon: 'component',
       noCache: false,
       link: null
     },

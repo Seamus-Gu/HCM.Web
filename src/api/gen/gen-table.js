@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-const baseUrl = 'v1/gen'
+const baseUrl = 'gen/v1/gen-table'
 
 // 获取生成表列表
 export function getGenTableList(query) {

@@ -18,7 +18,7 @@
       <s-col :span="24">
         <s-panel>
           <s-tool-bar
-            :addPer="['gen:genTable:add']"
+            :addPer="['gen:gen-table:add']"
             :columns="columns"
             @add="handleAdd"
             @refresh="handleRefresh"
@@ -27,7 +27,7 @@
           <s-table ref="tableRef" :api="getGenTableList" :columns="columns">
             <template #action="{ row }">
               <s-button
-                v-has="['gen:genTable:genrate']"
+                v-has="['gen:gen-table:generate']"
                 link
                 type="primary"
                 size="small"
@@ -36,7 +36,7 @@
                 生成报表
               </s-button>
               <s-button
-                v-has="['gen:genTable:edit']"
+                v-has="['gen:gen-table:edit']"
                 link
                 type="primary"
                 size="small"
@@ -45,7 +45,7 @@
                 修改
               </s-button>
               <s-button
-                v-has="['gen:genTable:column']"
+                v-has="['gen:gen-table:column']"
                 link
                 type="primary"
                 size="small"
@@ -55,7 +55,7 @@
               </s-button>
               <s-divider direction="vertical" />
               <s-button
-                v-has="['gen:genTable:remove']"
+                v-has="['gen:gen-table:remove']"
                 link
                 type="primary"
                 size="small"
@@ -68,11 +68,36 @@
         </s-panel>
       </s-col>
     </s-row>
+
+    <s-form
+      ref="formRef"
+      title="根据SQL生成"
+      :schema="formSchema"
+      :visible="formVisible"
+      :model="formState"
+      :rules="formRules"
+      :confirmLoading="confirmLoading"
+      @confirm="handleSubmit"
+      @close="handleClose"
+    >
+      <template #sysDeptId>
+        <s-flex-col :span="24">
+          <s-form-item label="部门" prop="sysDeptId" label-width="84px">
+            <s-tree-select
+              v-model="formState['sysDeptId']"
+              :data="treeDataSource"
+              :check-strictly="true"
+              placeholder="请选择部门"
+            ></s-tree-select>
+          </s-form-item>
+        </s-flex-col>
+      </template>
+    </s-form>
   </div>
 </template>
 <script setup>
 import dayjs from 'dayjs'
-import { getGenTableList, removeGenTable } from '@/api/tools/gen'
+import { getGenTableList, removeGenTable } from '@/api/gen/gen-table'
 
 const querySchema = [
   {
@@ -105,14 +130,172 @@ const columns = [
   }
 ]
 
+const formSchema = [
+  {
+    label: '用户账号',
+    name: 'userName',
+    component: 'input'
+  },
+  {
+    label: '用户名称',
+    name: 'nickName',
+    component: 'input'
+  },
+  {
+    label: '用户密码',
+    name: 'password',
+    component: 'input',
+    span: 24,
+    props: {
+      type: 'password',
+      showPassword: true,
+      clearable: true
+    }
+  },
+  {
+    label: '手机号码',
+    name: 'phoneNumber',
+    component: 'input'
+  },
+  {
+    label: '邮箱',
+    name: 'email',
+    component: 'input'
+  },
+  {
+    label: '用户性别',
+    name: 'sex',
+    component: 'select',
+    props: {
+      options: [
+        {
+          value: '1',
+          label: '男'
+        },
+        {
+          value: '0',
+          label: '女'
+        }
+      ]
+    }
+  },
+  {
+    label: '用户状态',
+    name: 'userStatus',
+    component: 'select',
+    props: {
+      options: [
+        {
+          value: 0,
+          label: '启用'
+        },
+        {
+          value: 1,
+          label: '停用'
+        }
+      ]
+    }
+  },
+  {
+    label: '所属部门',
+    name: 'sysDeptId'
+  },
+  {
+    label: '角色',
+    name: 'roleIds',
+    span: 24,
+    component: 'select',
+    props: {
+      multiple: true,
+      request: async () => {
+        const res = await getRoleList({ pageSize: 999 })
+
+        res.data.items.filter(t => {
+          t.value = t.id
+          t.label = t.roleName
+          return true
+        })
+
+        return res.data.items
+      }
+    }
+  }
+]
+
+const formRules = {
+  userName: [
+    {
+      required: true,
+      message: '用户名必须填写',
+      trigger: 'blur'
+    },
+    {
+      min: 5,
+      max: 20,
+      message: '用户名称长度必须介于 5 和 20 之间',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: '密码必须填写',
+      trigger: 'blur'
+    },
+    {
+      min: 5,
+      max: 20,
+      message: '用户密码长度必须介于 5 和 20 之间',
+      trigger: 'blur'
+    }
+  ],
+  nickName: [
+    {
+      required: true,
+      message: '用户名称必须填写',
+      trigger: 'blur'
+    }
+  ],
+  phoneNumber: [
+    {
+      pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+      message: '请输入正确的手机号码',
+      trigger: 'blur'
+    }
+  ],
+  email: [
+    {
+      type: 'email',
+      message: "'请输入正确的邮箱地址",
+      trigger: ['blur', 'change']
+    }
+  ]
+}
+
 const router = useRouter()
 const { proxy } = getCurrentInstance()
 
 const filters = ref({}) // Query Form 查询参数
 const queryLoad = ref(false) // 查询Loading
 const resetLoad = ref(false) // 重置Loading
-
 const tableRef = ref() // Table Ref
+
+const formVisible = ref(false) // Form 打开关闭
+const formTitle = ref('新增用户') // Form 标题
+const confirmLoading = ref(false) // Form 确认Loading
+const formRef = ref() // Form Ref
+
+const formState = ref({
+  userName: '',
+  password: '000000',
+  nickName: '',
+  phoneNumber: undefined,
+  email: undefined,
+  sex: '1',
+  userStatus: 0,
+  sysDeptId: undefined,
+  roleIds: undefined
+})
 
 function handleQuery() {
   queryLoad.value = true
@@ -130,9 +313,8 @@ function handleReset() {
 }
 
 function handleAdd() {
-  router.push({
-    path: '/tool/gen/add'
-  })
+  formSchema.find(t => t.name === 'password').visible = true
+  formVisible.value = true
 }
 
 function handleRefresh() {
