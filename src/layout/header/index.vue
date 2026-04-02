@@ -19,9 +19,14 @@
       <el-col :span="8">
         <el-row justify="end">
           <el-space size="default">
-            <div v-if="searchSwitch" class="header-item cursor-pointer">
+            <div v-if="noticeSwitch" class="header-item cursor-pointer">
               <svg class="icon" ariel-hidden="true" font-size="20px">
-                <use xlink:href="#icon-search" />
+                <use xlink:href="#icon-remind" />
+              </svg>
+            </div>
+            <div v-if="localizationSwitch" class="header-item cursor-pointer">
+              <svg class="icon" ariel-hidden="true" font-size="20px">
+                <use xlink:href="#icon-i18n" />
               </svg>
             </div>
             <div
@@ -31,11 +36,6 @@
             >
               <svg class="icon" ariel-hidden="true" font-size="20px">
                 <use xlink:href="#icon-theme" />
-              </svg>
-            </div>
-            <div v-if="noticeSwitch" class="header-item cursor-pointer">
-              <svg class="icon" ariel-hidden="true" font-size="20px">
-                <use xlink:href="#icon-remind" />
               </svg>
             </div>
             <ScreenFull
@@ -81,7 +81,7 @@ export default {
     })
 
     const affixHeader = computed(() => settingsStore.affixHeader)
-    const searchSwitch = computed(() => settingsStore.searchSwitch)
+    const localizationSwitch = computed(() => settingsStore.localizationSwitch)
     const themeSwitch = computed(() => settingsStore.themeSwitch)
     const noticeSwitch = computed(() => settingsStore.noticeSwitch)
     const fullSwitch = computed(() => settingsStore.fullSwitch)
@@ -117,7 +117,7 @@ export default {
       headerRef,
       isHeaderFixed,
       affixHeader,
-      searchSwitch,
+      localizationSwitch,
       themeSwitch,
       noticeSwitch,
       fullSwitch,

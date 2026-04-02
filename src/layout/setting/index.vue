@@ -73,7 +73,7 @@
             <span>搜索</span>
           </s-col>
           <s-col :offset="11" :span="4">
-            <s-switch v-model="searchSwitch" />
+            <s-switch v-model="localizationSwitch" />
           </s-col>
         </s-row>
         <s-row align="middle">
@@ -155,10 +155,10 @@ export default {
           settingsStore.toggleAffixHeader()
         }
       }),
-      searchSwitch: computed({
-        get: () => settingsStore.searchSwitch,
+      localizationSwitch: computed({
+        get: () => settingsStore.localizationSwitch,
         set: () => {
-          settingsStore.toggleSearchSwitch()
+          settingsStore.togglelocalizationSwitch()
         }
       }),
       themeSwitch: computed({
@@ -195,7 +195,7 @@ export default {
           isDark: isDark.value,
           showTabView: switchData.showTabView,
           affixHeader: switchData.affixHeader,
-          searchSwitch: switchData.searchSwitch,
+          localizationSwitch: switchData.localizationSwitch,
           themeSwitch: switchData.themeSwitch,
           noticeSwitch: switchData.noticeSwitch,
           fullSwitch: switchData.fullSwitch
@@ -210,7 +210,7 @@ export default {
           showTabView: true,
           showSideBar: true,
           affixHeader: true,
-          searchSwitch: true,
+          localizationSwitch: true,
           themeSwitch: true,
           noticeSwitch: true,
           fullSwitch: true

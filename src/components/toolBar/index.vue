@@ -15,7 +15,7 @@
                 <use xlink:href="#icon-plus" />
               </svg>
             </template>
-            新增
+            {{ t('common.add') }}
           </s-button>
           <s-button
             v-if="hasBatchDelete"
@@ -28,7 +28,7 @@
                 <use xlink:href="#icon-trash-alt" />
               </svg>
             </template>
-            批量删除
+            {{ t('common.batch-delete') }}
           </s-button>
           <s-button
             v-if="hasExport"
@@ -129,6 +129,8 @@
 <script>
 import useSettingsStore from '@/store/modules/settings'
 
+import { useI18n } from 'vue-i18n'
+
 export default {
   name: 'SToolBar',
   props: {
@@ -178,6 +180,8 @@ export default {
   },
   setup(props, context) {
     const settingsStore = useSettingsStore()
+    const { t } = useI18n()
+
     const loadData = reactive({
       addLoad: false
     })
@@ -230,6 +234,7 @@ export default {
     })
 
     return {
+      t,
       ...toRefs(columnsData),
       ...toRefs(loadData),
       ...toRefs(methods)

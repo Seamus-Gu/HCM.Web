@@ -8,7 +8,7 @@ const settingsStore = defineStore('settings', {
     isDark: false,
     showTabView: true,
     affixHeader: true,
-    searchSwitch: true,
+    localizationSwitch: true,
     themeSwitch: true,
     noticeSwitch: true,
     fullSwitch: true,
@@ -32,8 +32,8 @@ const settingsStore = defineStore('settings', {
     toggleAffixHeader() {
       this.affixHeader = !this.affixHeader
     },
-    toggleSearchSwitch() {
-      this.searchSwitch = !this.searchSwitch
+    togglelocalizationSwitch() {
+      this.localizationSwitch = !this.localizationSwitch
     },
     toggleThemeSwitch() {
       this.themeSwitch = !this.themeSwitch

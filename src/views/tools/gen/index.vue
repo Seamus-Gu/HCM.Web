@@ -71,7 +71,7 @@
 
     <s-form
       ref="formRef"
-      title="根据SQL生成"
+      :title="t('gen.gen-table.add')"
       :schema="formSchema"
       :visible="formVisible"
       :model="formState"
@@ -96,8 +96,11 @@
   </div>
 </template>
 <script setup>
-import dayjs from 'dayjs'
+import { useI18n } from 'vue-i18n'
 import { getGenTableList, removeGenTable } from '@/api/gen/gen-table'
+import { generateData } from '@/api/gen/sql'
+
+const { t, locale } = useI18n()
 
 const querySchema = [
   {
@@ -132,142 +135,23 @@ const columns = [
 
 const formSchema = [
   {
-    label: '用户账号',
-    name: 'userName',
-    component: 'input'
-  },
-  {
-    label: '用户名称',
-    name: 'nickName',
-    component: 'input'
-  },
-  {
-    label: '用户密码',
-    name: 'password',
+    label: t('gen.gen-table.sql'),
+    name: 'sqlStr',
     component: 'input',
     span: 24,
     props: {
-      type: 'password',
-      showPassword: true,
-      clearable: true
-    }
-  },
-  {
-    label: '手机号码',
-    name: 'phoneNumber',
-    component: 'input'
-  },
-  {
-    label: '邮箱',
-    name: 'email',
-    component: 'input'
-  },
-  {
-    label: '用户性别',
-    name: 'sex',
-    component: 'select',
-    props: {
-      options: [
-        {
-          value: '1',
-          label: '男'
-        },
-        {
-          value: '0',
-          label: '女'
-        }
-      ]
-    }
-  },
-  {
-    label: '用户状态',
-    name: 'userStatus',
-    component: 'select',
-    props: {
-      options: [
-        {
-          value: 0,
-          label: '启用'
-        },
-        {
-          value: 1,
-          label: '停用'
-        }
-      ]
-    }
-  },
-  {
-    label: '所属部门',
-    name: 'sysDeptId'
-  },
-  {
-    label: '角色',
-    name: 'roleIds',
-    span: 24,
-    component: 'select',
-    props: {
-      multiple: true,
-      request: async () => {
-        const res = await getRoleList({ pageSize: 999 })
-
-        res.data.items.filter(t => {
-          t.value = t.id
-          t.label = t.roleName
-          return true
-        })
-
-        return res.data.items
-      }
+      type: 'textarea',
+      rows: 10
     }
   }
 ]
 
 const formRules = {
-  userName: [
+  sqlStr: [
     {
       required: true,
-      message: '用户名必须填写',
+      message: t('gen.gen-table.sql') + t('common.required'),
       trigger: 'blur'
-    },
-    {
-      min: 5,
-      max: 20,
-      message: '用户名称长度必须介于 5 和 20 之间',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: '密码必须填写',
-      trigger: 'blur'
-    },
-    {
-      min: 5,
-      max: 20,
-      message: '用户密码长度必须介于 5 和 20 之间',
-      trigger: 'blur'
-    }
-  ],
-  nickName: [
-    {
-      required: true,
-      message: '用户名称必须填写',
-      trigger: 'blur'
-    }
-  ],
-  phoneNumber: [
-    {
-      pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-      message: '请输入正确的手机号码',
-      trigger: 'blur'
-    }
-  ],
-  email: [
-    {
-      type: 'email',
-      message: "'请输入正确的邮箱地址",
-      trigger: ['blur', 'change']
     }
   ]
 }
@@ -281,20 +165,11 @@ const resetLoad = ref(false) // 重置Loading
 const tableRef = ref() // Table Ref
 
 const formVisible = ref(false) // Form 打开关闭
-const formTitle = ref('新增用户') // Form 标题
 const confirmLoading = ref(false) // Form 确认Loading
 const formRef = ref() // Form Ref
 
 const formState = ref({
-  userName: '',
-  password: '000000',
-  nickName: '',
-  phoneNumber: undefined,
-  email: undefined,
-  sex: '1',
-  userStatus: 0,
-  sysDeptId: undefined,
-  roleIds: undefined
+  sqlStr: undefined
 })
 
 function handleQuery() {
@@ -313,7 +188,6 @@ function handleReset() {
 }
 
 function handleAdd() {
-  formSchema.find(t => t.name === 'password').visible = true
   formVisible.value = true
 }
 
@@ -343,6 +217,35 @@ function handleRemove(id) {
         tableRef.value.reset(filters.value)
       })
     }
+  })
+}
+
+function handleClose() {
+  formVisible.value = false
+  formRef.value.resetFields()
+  handleResetForm()
+}
+
+function handleResetForm() {
+  formState.value = {
+    sqlStr: undefined
+  }
+}
+// 提交按钮
+function handleSubmit() {
+  formRef.value.validate().then(() => {
+    confirmLoading.value = true
+
+    generateData(formState.value)
+      .then(() => {
+        tableRef.value.reset()
+      })
+      .finally(() => {
+        handleClose()
+        confirmLoading.value = false
+      })
+
+    handleResetForm()
   })
 }
 </script>
