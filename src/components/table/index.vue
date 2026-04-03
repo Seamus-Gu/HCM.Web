@@ -39,8 +39,8 @@
 
     <el-pagination
       class="table-pagination"
-      :current-page="pageNum"
-      :page-size="size"
+      v-model:current-page="pageNum"
+      v-model:page-size="size"
       :page-sizes="pageSizeArr"
       :background="true"
       :layout="paginationLayout"
@@ -153,8 +153,6 @@ export default {
         return true
       },
       handleCurrentChange: pageNum => {
-        paginationData.pageNum = pageNum
-
         methods.getData()
       },
       handleSizeChange: size => {

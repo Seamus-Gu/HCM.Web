@@ -118,11 +118,5 @@
     "logManage": "日志管理",
     "configManage": "参数配置",
     "notice": "通知公告"
-  },
-  "gen": {
-    "gen-table": {
-      "add": "根据sql语句生成表格数据",
-      "sql": "SQL语句"
-    }
   }
 }

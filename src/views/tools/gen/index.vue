@@ -31,7 +31,7 @@
                 link
                 type="primary"
                 size="small"
-                @click="handleEdit(row.id)"
+                @click="handleGenerate(row.id)"
               >
                 生成报表
               </s-button>
@@ -71,7 +71,7 @@
 
     <s-form
       ref="formRef"
-      :title="t('gen.gen-table.add')"
+      :title="t('gen.gen-table.generate-by-sql')"
       :schema="formSchema"
       :visible="formVisible"
       :model="formState"
@@ -112,23 +112,18 @@ const querySchema = [
 
 const columns = [
   {
-    label: '命名空间',
+    label: t('gen.gen-table.nameSpace'),
     name: 'nameSpace',
 
     sortable: true
   },
   {
-    label: '表名',
+    label: t('gen.gen-table.tableName'),
     name: 'tableName',
     sortable: true
   },
   {
-    label: '名称',
-    name: 'name',
-    sortable: true
-  },
-  {
-    label: '操作',
+    label: t('common.operation'),
     name: 'action'
   }
 ]
@@ -194,6 +189,8 @@ function handleAdd() {
 function handleRefresh() {
   tableRef.value.refresh(filters.value)
 }
+
+function handleGenerate(id) {}
 
 function handleColumn(row) {
   router.push({

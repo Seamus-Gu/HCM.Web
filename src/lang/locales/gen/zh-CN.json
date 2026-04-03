@@ -1,0 +1,10 @@
+{
+  "gen": {
+    "gen-table": {
+      "generate-by-sql": "根据sql语句生成表格数据",
+      "sql": "SQL语句",
+      "nameSpace": "命名空间",
+      "tableName": "表名"
+    }
+  }
+}
