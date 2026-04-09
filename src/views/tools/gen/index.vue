@@ -27,31 +27,23 @@
           <s-table ref="tableRef" :api="getGenTableList" :columns="columns">
             <template #action="{ row }">
               <s-button
-                v-has="['gen:gen-table:generate']"
-                link
-                type="primary"
-                size="small"
-                @click="handleGenerate(row.id)"
-              >
-                生成报表
-              </s-button>
-              <s-button
                 v-has="['gen:gen-table:edit']"
                 link
                 type="primary"
                 size="small"
                 @click="handleEdit(row.id)"
               >
-                修改
+                {{ t('common.edit') }}
               </s-button>
+              <s-divider direction="vertical" />
               <s-button
-                v-has="['gen:gen-table:column']"
+                v-has="['gen:gen-table:generate']"
                 link
                 type="primary"
                 size="small"
-                @click="handleColumn(row)"
+                @click="handleGenerate(row.id)"
               >
-                配置列
+                {{ t('gen.gen-table.generate-code') }}
               </s-button>
               <s-divider direction="vertical" />
               <s-button
@@ -61,7 +53,7 @@
                 size="small"
                 @click="handleRemove(row.id)"
               >
-                删除
+                {{ t('common.delete') }}
               </s-button>
             </template>
           </s-table>
@@ -70,51 +62,96 @@
     </s-row>
 
     <s-form
-      ref="formRef"
+      ref="addFormRef"
       :title="t('gen.gen-table.generate-by-sql')"
-      :schema="formSchema"
-      :visible="formVisible"
-      :model="formState"
-      :rules="formRules"
+      :schema="addFormSchema"
+      :visible="addFormVisible"
+      :model="addFormState"
+      :rules="addFormRules"
       :confirmLoading="confirmLoading"
       @confirm="handleSubmit"
       @close="handleClose"
     >
-      <template #sysDeptId>
-        <s-flex-col :span="24">
-          <s-form-item label="部门" prop="sysDeptId" label-width="84px">
-            <s-tree-select
-              v-model="formState['sysDeptId']"
-              :data="treeDataSource"
-              :check-strictly="true"
-              placeholder="请选择部门"
-            ></s-tree-select>
-          </s-form-item>
-        </s-flex-col>
-      </template>
     </s-form>
+
+    <s-dialog
+      v-model="dialogVisible"
+      width="80%"
+      :title="t('gen.gen-table.code-preview')"
+    >
+      <s-tabs v-model="tabVal" @tab-change="handleChangeTab">
+        <template v-for="(item, index) in codeList">
+          <s-tab-pane :label="item.name" :name="index">
+            <s-panel height="520px" :scrollY="false">
+              <s-button
+                circle
+                style="float: right; position: absolute; right: 6%; z-index: 10"
+                v-copy-text="item.code"
+              >
+                <svg class="icon" ariel-hidden="true">
+                  <use xlink:href="#icon-copy" />
+                </svg>
+              </s-button>
+              <Codemirror
+                v-if="tabVal === index"
+                :value="item.code"
+                :options="{
+                  mode: 'text/x-csharp',
+                  readOnly: true,
+                  theme: 'eclipse', //主题
+                  lineNumbers: true,
+                  lineWrapping: true,
+                  matchBrackets: true,
+                  cursorBlinkRate: -1
+                }"
+              />
+            </s-panel>
+          </s-tab-pane>
+        </template>
+      </s-tabs>
+      <template #footer>
+        <s-button type="primary" @click="handleExportCode">
+          {{ t('gen.gen-table.export-copy') }}
+        </s-button>
+        <s-button @click="handleDialogClose">
+          {{ t('common.close') }}
+        </s-button>
+      </template>
+    </s-dialog>
   </div>
 </template>
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { getGenTableList, removeGenTable } from '@/api/gen/gen-table'
+import { getGenTableList, generateCode, exportCode } from '@/api/gen/gen-table'
 import { generateData } from '@/api/gen/sql'
+import { namespaceOptions } from '@/data/gen/options'
+import Codemirror from 'codemirror-editor-vue3'
+import 'codemirror/mode/clike/clike.js'
+import 'codemirror/theme/dracula.css'
+import 'codemirror/theme/eclipse.css'
 
 const { t, locale } = useI18n()
 
 const querySchema = [
   {
-    label: '名称',
-    name: 'name',
+    label: t('gen.gen-table.namespace'),
+    name: 'namespace',
+    component: 'select',
+    props: {
+      options: namespaceOptions
+    }
+  },
+  {
+    label: t('gen.gen-table.tableName'),
+    name: 'tableName',
     component: 'input'
   }
 ]
 
 const columns = [
   {
-    label: t('gen.gen-table.nameSpace'),
-    name: 'nameSpace',
-
+    label: t('gen.gen-table.namespace'),
+    name: 'namespace',
     sortable: true
   },
   {
@@ -128,7 +165,7 @@ const columns = [
   }
 ]
 
-const formSchema = [
+const addFormSchema = [
   {
     label: t('gen.gen-table.sql'),
     name: 'sqlStr',
@@ -141,7 +178,7 @@ const formSchema = [
   }
 ]
 
-const formRules = {
+const addFormRules = {
   sqlStr: [
     {
       required: true,
@@ -159,13 +196,19 @@ const queryLoad = ref(false) // 查询Loading
 const resetLoad = ref(false) // 重置Loading
 const tableRef = ref() // Table Ref
 
-const formVisible = ref(false) // Form 打开关闭
+const addFormVisible = ref(false) // Form 打开关闭
 const confirmLoading = ref(false) // Form 确认Loading
-const formRef = ref() // Form Ref
+const addFormRef = ref() // Form Ref
 
-const formState = ref({
+const addFormState = ref({
   sqlStr: undefined
 })
+
+const dialogVisible = ref(false)
+const tabVal = ref(0)
+const tableId = ref()
+const codeList = ref([])
+const codeData = ref()
 
 function handleQuery() {
   queryLoad.value = true
@@ -183,14 +226,40 @@ function handleReset() {
 }
 
 function handleAdd() {
-  formVisible.value = true
+  addFormVisible.value = true
 }
 
 function handleRefresh() {
   tableRef.value.refresh(filters.value)
 }
 
-function handleGenerate(id) {}
+function handleGenerate(id) {
+  dialogVisible.value = true
+  tabVal.value = 0
+  tableId.value = id
+  generateCode({ tableId: id }).then(res => {
+    codeList.value = res.data
+    codeData.value = codeList.value[0].code
+  })
+}
+
+function handleChangeTab(index) {
+  codeData.value = codeList.value[index].code
+}
+
+function handleExportCode() {
+  exportCode({
+    tableId: tableId.value
+  })
+}
+
+function handleDialogClose() {
+  dialogVisible.value = false
+  tabVal.value = 0
+  tableId.value = undefined
+  codeList.value = []
+  codeData.value = ''
+}
 
 function handleColumn(row) {
   router.push({
@@ -200,9 +269,15 @@ function handleColumn(row) {
 }
 
 function handleEdit(id) {
+  // const tableId = row.tableId || ids.value[0]
+  // router.push({
+  //   path: '/tool/gen-edit/index/' + tableId,
+  //   query: { pageNum: queryParams.value.pageNum }
+  // })
+
   router.push({
-    path: '/tool/gen/detail',
-    query: { tableId: id }
+    path: '/tool/gen-column/' + id,
+    query: {}
   })
 }
 
@@ -218,22 +293,22 @@ function handleRemove(id) {
 }
 
 function handleClose() {
-  formVisible.value = false
-  formRef.value.resetFields()
+  addFormVisible.value = false
+  addFormRef.value.resetFields()
   handleResetForm()
 }
 
 function handleResetForm() {
-  formState.value = {
+  addFormState.value = {
     sqlStr: undefined
   }
 }
 // 提交按钮
 function handleSubmit() {
-  formRef.value.validate().then(() => {
+  addFormRef.value.validate().then(() => {
     confirmLoading.value = true
 
-    generateData(formState.value)
+    generateData(addFormState.value)
       .then(() => {
         tableRef.value.reset()
       })

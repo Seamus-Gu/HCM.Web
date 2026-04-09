@@ -17,7 +17,9 @@ export function loadAllProxy(app) {
 }
 
 import has from './directive/v-has'
+import copyText from './directive/v-copy-text'
 
 export function loadAllDirective(app) {
   app.directive('has', has)
+  app.directive('copyText', copyText)
 }

@@ -2,10 +2,13 @@
   <el-card
     :style="{
       width: width,
-      height: height,
-      overflowY: scrollY ? 'auto' : 'none',
-      overflowX: scrollX ? 'auto' : 'none'
+      height: height
     }"
+    :body-style="{
+      overflowY: scrollY ? 'auto' : 'hidden',
+      overflowX: scrollX ? 'auto' : 'hidden'
+    }"
+    body-class="card-body"
     v-bind="$attrs"
   >
     <template #header t v-if="$slots.header || title">
@@ -32,11 +35,11 @@ export default {
     },
     scrollX: {
       type: Boolean,
-      default: false
+      default: true
     },
     scrollY: {
       type: Boolean,
-      default: false
+      default: true
     },
     title: {
       type: String

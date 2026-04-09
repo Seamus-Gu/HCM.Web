@@ -4,7 +4,7 @@
       <template v-for="(_, name) in $slots" #[name]="scopedData">
         <slot :name="name" v-bind="scopedData"></slot>
       </template>
-      <template v-if="!$slots.footer" #footer>
+      <template v-if="hasFooter && !$slots.footer" #footer>
         <div class="dialog-footer">
           <s-button @click="handleClose">取消</s-button>
           <s-button
@@ -28,6 +28,10 @@ export default {
     confirmLoading: {
       type: Boolean,
       default: false
+    },
+    hasFooter: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props, context) {

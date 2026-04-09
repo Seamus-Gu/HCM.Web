@@ -106,63 +106,170 @@ const menuRoutes = [
           title: '代码生成',
           icon: 'code'
         }
+      },
+      {
+        name: 'genColumn',
+        path: '/tool/gen-column/:tableId(\\d+)',
+        hidden: true,
+        component: 'tools/gen/Column',
+        meta: {
+          title: '修改生成配置',
+          icon: 'code'
+        }
       }
     ]
   },
   {
-    name: 'Components',
-    path: '/components',
+    name: 'examples',
+    path: '/examples',
     hidden: false,
-    redirect: 'noRedirect',
     component: 'Layout',
     alwaysShow: true,
     meta: {
-      title: '组件',
-      icon: 'component',
-      noCache: false,
-      link: null
+      title: '示例',
+      icon: 'example'
     },
     children: [
       {
-        path: '/',
-        hidden: false,
-        redirect: 'noRedirect',
+        path: '/examples/basic',
         component: 'ParentView',
-        alwaysShow: true,
+        meta: {
+          title: '基础组件',
+          icon: 'example'
+        },
+        children: [
+          {
+            name: 'button',
+            path: '/examples/basic/button',
+            hidden: false,
+            component: 'examples/basic/button/index',
+            meta: {
+              title: 'Button 按钮',
+              icon: 'example'
+            }
+          },
+          {
+            name: 'color',
+            path: '/examples/basic/color',
+            hidden: false,
+            component: 'examples/basic/color/index',
+            meta: {
+              title: '色彩',
+              icon: 'example'
+            }
+          },
+          {
+            name: 'layout',
+            path: '/examples/basic/layout',
+            hidden: false,
+            component: 'examples/basic/layout/index',
+            meta: {
+              title: '布局',
+              icon: 'example'
+            }
+          }
+        ]
+      },
+      {
+        path: '/examples/form',
+        component: 'ParentView',
+        meta: {
+          title: '表单组件',
+          icon: 'example'
+        },
+        children: [
+          {
+            name: 'form',
+            path: '/examples/form/index',
+            hidden: false,
+            component: 'examples/form/form/index',
+            meta: {
+              title: 'Form 表单',
+              icon: 'example'
+            }
+          },
+          {
+            name: 'FormContent',
+            path: '/examples/form/form-content',
+            hidden: false,
+            component: 'examples/form/form/FormContent',
+            meta: {
+              title: 'Form 表单内容',
+              icon: 'example'
+            }
+          },
+          {
+            name: 'input',
+            path: '/examples/form/input',
+            hidden: false,
+            component: 'examples/form/input/index',
+            meta: {
+              title: 'Input 输入框',
+              icon: 'example'
+            }
+          }
+        ]
+      },
+      {
+        path: '/examples/data-show',
+        component: 'ParentView',
         meta: {
           title: '数据展示',
-          icon: 'user-manage',
-          noCache: false,
-          link: null
+          icon: 'example'
         },
         children: [
           {
             name: 'DataShow',
-            path: '/dataShow',
+            path: '/components/data-show/table',
             hidden: false,
             redirect: 'noRedirect',
             component: 'ParentView',
             alwaysShow: true,
             meta: {
               title: 'Table',
-              icon: 'user-manage',
-              noCache: false,
-              link: null
+              icon: 'example'
             },
             children: [
               {
                 name: 'Table',
-                path: '/table',
+                path: '/examples/data_show/table/default',
                 hidden: false,
                 component: 'examples/dataShow/table/index',
                 meta: {
                   title: '默认table',
-                  icon: 'user-manage',
-                  noCache: false,
-                  link: null
+                  icon: 'example'
+                }
+              },
+              {
+                name: 'TreeTable',
+                path: '/examples/data_show/table/tree',
+                hidden: false,
+                component: 'examples/dataShow/table/TreeTable',
+                meta: {
+                  title: '树table',
+                  icon: 'example'
                 }
               }
             ]
+          }
+        ]
+      },
+      {
+        path: '/examples/navigation',
+        component: 'ParentView',
+        meta: {
+          title: '导航',
+          icon: 'example'
+        },
+        children: [
+          {
+            name: 'Dropdown',
+            path: '/examples/navigation/dropdown',
+            component: 'examples/navigation/dropdown/index',
+            meta: {
+              title: '下拉菜单',
+              icon: 'example'
+            }
           }
         ]
       }

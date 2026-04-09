@@ -1,11 +1,7 @@
 <template>
   <div class="gen-column-container">
     <s-panel>
-      <s-flex-row
-        v-if="isFirst"
-        justify="center"
-        style="margin-bottom: 32px; padding: 0 16px"
-      >
+      <s-flex-row justify="center" style="margin-bottom: 32px; padding: 0 16px">
         <s-col :span="18">
           <s-steps :active="1" finish-status="success">
             <s-step title="生成配置" />
@@ -85,8 +81,8 @@ import dayjs from 'dayjs'
 
 import { boolEnum } from '@/data/enum'
 import { componentOptions } from '@/data/option'
-import { getEnumCombo } from '@/api/enum'
-import { getColumnList, addGenColumnList } from '@/api/tool/gen'
+// import { getEnumCombo } from '@/api/enum'
+// import { getColumnList, addGenColumnList } from '@/api/tool/gen'
 
 const sqlTypeEnum = ref([])
 
@@ -297,15 +293,15 @@ function handleSubmitColumnList() {
 
 isFirst.value = router.currentRoute.value.query.isFirst
 
-getEnumCombo('SQLType').then(res => {
-  sqlTypeEnum.value = res.data
-})
+// getEnumCombo('SQLType').then(res => {
+//   sqlTypeEnum.value = res.data
+// })
 
-if (router.currentRoute.value.query.tableId) {
-  getColumnList({
-    tableId: router.currentRoute.value.query.tableId
-  }).then(res => {
-    columnData.value = res.data
-  })
-}
+// if (router.currentRoute.value.query.tableId) {
+//   getColumnList({
+//     tableId: router.currentRoute.value.query.tableId
+//   }).then(res => {
+//     columnData.value = res.data
+//   })
+// }
 </script>
