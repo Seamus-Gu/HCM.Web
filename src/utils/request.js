@@ -88,74 +88,59 @@ service.interceptors.response.use(
   }
 )
 
-export function get(url, params = {}) {
-  return new Promise((resolve, reject) => {
-    httpService({
-      url: url,
-      method: 'get',
-      params: params
-    })
-      .then(res => {
-        resolve(res)
-      })
-      .catch(err => {
-        reject(err)
-      })
-  })
-}
-
-export function post(
-  url,
-  params = {},
-  headers = { 'Content-Type': 'application/json' }
-) {
-  return new Promise((resolve, reject) => {
-    httpService({
-      url: url,
-      method: 'post',
-      data: params,
-      headers: headers
-    })
-      .then(res => {
-        resolve(res)
-      })
-      .catch(err => {
-        reject(err)
-      })
-  })
-}
-
 // 通用下载方法
-export function download(url, params = {}, filename, config) {
-  console.log(url)
-  return service
-    .post(url, params, {
-      transformRequest: [
-        params => {
-          return tansParams(params)
-        }
-      ],
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      responseType: 'blob',
-      ...config
-    })
-    .then(async data => {
-      const isBlob = blobValidate(data)
-      if (isBlob) {
-        const blob = new Blob([data])
-        saveAs(blob, filename)
-      } else {
-        const resText = await data.text()
-        const rspObj = JSON.parse(resText)
-        const errMsg =
-          errorCode[rspObj.code] || rspObj.message || errorCode['default']
-        ElMessage.error(errMsg)
+export async function download(url, data = {}, filename, config) {
+  try {
+    const response = await axios.post(
+      import.meta.env.VITE_APP_BASE_API + url,
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + getToken()
+        },
+        responseType: 'blob',
+        ...config
       }
+    )
+
+    const contentDisposition = response.headers['content-disposition']
+    let fileName = 'test.zip'
+    if (contentDisposition) {
+      // 解析 .NET 返回的文件名（支持中文）
+      const fileNameMatch = contentDisposition.match(
+        /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/
+      )
+      if (fileNameMatch != null && fileNameMatch[1]) {
+        // 解码文件名（解决中文乱码）
+        fileName = decodeURIComponent(fileNameMatch[1].replace(/"/g, ''))
+      }
+    }
+    // 创建 Blob 对象
+    const blob = new Blob([response.data], {
+      type: response.data.type || 'application/octet-stream'
     })
-    .catch(r => {
-      console.error(r)
-      ElMessage.error('下载文件出现错误，请联系管理员！')
-    })
+
+    // 创建下载链接
+    const link = document.createElement('a')
+    const blobUrl = window.URL.createObjectURL(blob)
+    link.href = blobUrl
+    link.download = fileName
+
+    // 触发下载
+    document.body.appendChild(link)
+    link.click()
+
+    // 释放资源
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(blobUrl)
+
+    return Promise.resolve('下载成功')
+  } catch (error) {
+    console.error(error)
+    ElMessage.error('下载文件出现错误，请联系管理员！')
+    return Promise.reject(error)
+  }
 }
 
 export default service
