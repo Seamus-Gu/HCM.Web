@@ -29,9 +29,12 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "./src/styles/variables.scss"  as *;
-          @use "./src/styles/mixin.scss" as *;`,
-          quietDeps: true
+          additionalData: `
+            @use "./src/styles/variables.scss"  as *;
+            @use "./src/styles/mixin.scss" as *;
+          `,
+          quietDeps: true,
+          silenceDeprecations: ['legacy-js-api']
         }
       }
     }, // vite 相关配置
