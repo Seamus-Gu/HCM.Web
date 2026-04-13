@@ -53,7 +53,7 @@
                 size="small"
                 @click="handleRemove(row.id)"
               >
-                {{ t('common.delete') }}
+                {{ t('common.remove') }}
               </s-button>
             </template>
           </s-table>
@@ -121,6 +121,7 @@
   </div>
 </template>
 <script setup>
+//#region 引用
 import { useI18n } from 'vue-i18n'
 import { getGenTableList, generateCode, exportCode } from '@/api/gen/gen-table'
 import { generateData } from '@/api/gen/sql'
@@ -129,7 +130,9 @@ import Codemirror from 'codemirror-editor-vue3'
 import 'codemirror/mode/clike/clike.js'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/theme/eclipse.css'
-
+//#endregion
+const router = useRouter()
+const { proxy } = getCurrentInstance()
 const { t, locale } = useI18n()
 
 const querySchema = [
@@ -187,9 +190,6 @@ const addFormRules = {
     }
   ]
 }
-
-const router = useRouter()
-const { proxy } = getCurrentInstance()
 
 const filters = ref({}) // Query Form 查询参数
 const queryLoad = ref(false) // 查询Loading
@@ -276,7 +276,7 @@ function handleEdit(id) {
   // })
 
   router.push({
-    path: '/tool/gen-column/' + id,
+    path: '/tools/gen/edit/' + id,
     query: {}
   })
 }

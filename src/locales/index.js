@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 
-const modules = import.meta.glob('./locales/**/*.json', { eager: true })
+const modules = import.meta.glob('./modules/**/*.json', { eager: true })
 
 function deepMerge(target = {}, source = {}) {
   for (const key in source) {
@@ -22,7 +22,7 @@ function loadMessages() {
   const messages = Object.create(null)
 
   for (const [path, mod] of Object.entries(modules)) {
-    const match = path.match(/locales\/(.+)\/(.+)\.json$/)
+    const match = path.match(/modules\/(.+)\/(.+)\.json$/)
     if (!match) continue
     const [, , locale] = match
     if (!messages[locale]) messages[locale] = {}
@@ -37,7 +37,8 @@ const i18n = createI18n({
   legacy: false,
   locale: 'zh-CN',
   fallbackLocale: 'zh-CN',
-  messages: loadMessages()
+  messages: loadMessages(),
+  globalInjection: true
 })
 
 // const stores = useThemeConfig(pinia)

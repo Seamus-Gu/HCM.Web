@@ -352,29 +352,13 @@ export const darkList = {
   ]
 }
 
-// export function initSetting(setting) {
-//   let root = document.querySelector(':root')
-
-//   if (setting.theme === 'deepBlack') {
-//     document.querySelector('html').classList.add('dark')
-//   } else {
-//     document.querySelector('html').classList.remove('dark')
-//   }
-//   // root.style.setProperty('--el-color-primary', setting.themeColor)
-
-//   let themeColor = Object.keys(presetPrimaryColors).find(
-//     t => presetPrimaryColors[t] == setting.themeColor
-//   )
-
-//   // root.style.setProperty(
-//   //   '--el-color-primary-light-9',
-//   //   presetPalettes[themeColor][0]
-//   // )
-//   // root.style.setProperty('--theme-color-primary', color)
-//   // root.style.setProperty('--theme-menu-selsct', themeMenuSelect[color][theme])
-//   // root.style.setProperty('--theme-primary-hover', themePrimaryHover[color])
-//   // root.style.setProperty('--theme-primary-active', themePrimaryActive[color])
-// }
+// --el-color-primary: #409eff;           // 基础色
+// --el-color-primary-light-3: #79bbff;   // hover 色（自动生成）
+// --el-color-primary-light-5: #a0cfff;   // active 色（自动生成）
+// --el-color-primary-light-7: #c6e2ff;   // 淡色背景
+// --el-color-primary-light-8: #d9ecff;   // 边框色
+// --el-color-primary-light-9: #ecf5ff;   // 浅色背景
+// --el-color-primary-dark-2: #337ecc;    // 深色（点击态）
 
 function getBoxShadow(theme) {
   const color = boxShadow[theme]
@@ -393,6 +377,7 @@ export function setLoginTheme(theme) {
   colors = colorList[theme]
 
   root.style.setProperty('--color-primary', primary[theme])
+  root.style.setProperty('--el-color-primary', core[theme])
   root.style.setProperty('--color-primary-core', core[theme])
   root.style.setProperty('--color-primary-box-shadow', getBoxShadow(theme))
 
@@ -414,6 +399,7 @@ export function setTheme(isDark, theme) {
   }
 
   root.style.setProperty('--color-primary', primary[theme])
+  root.style.setProperty('--el-color-primary', core[theme])
   root.style.setProperty('--color-primary-core', core[theme])
   root.style.setProperty('--color-primary-box-shadow', getBoxShadow(theme))
 

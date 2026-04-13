@@ -1,0 +1,24 @@
+{
+  "gen": {
+    "gen-table": {
+      "name": "代码生成",
+      "generate-by-sql": "根据sql语句生成表格数据",
+      "sql": "SQL语句",
+      "namespace": "命名空间",
+      "tableName": "表名",
+      "generate-code": "生成代码",
+      "configure-columns": "配置列",
+      "code-preview": "代码预览",
+      "export-copy": "导出代码",
+      "basic": "基础信息",
+      "columns": "列信息"
+    },
+    "gen-column": {
+      "name": "列名",
+      "column-type": "列类型",
+      "column-desc": "列注释",
+      "is-nullable": "是否可空",
+      "component-type": "组件类型"
+    }
+  }
+}

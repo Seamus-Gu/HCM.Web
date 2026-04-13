@@ -99,7 +99,7 @@ const menuRoutes = [
     children: [
       {
         name: 'gen',
-        path: '/tools/gen',
+        path: '/tools/gen/gen-table',
         hidden: false,
         component: 'tools/gen/index',
         meta: {
@@ -108,10 +108,10 @@ const menuRoutes = [
         }
       },
       {
-        name: 'genColumn',
-        path: '/tool/gen-column/:tableId(\\d+)',
+        name: 'genEdit',
+        path: '/tools/gen/edit/:tableId(\\d+)',
         hidden: true,
-        component: 'tools/gen/Column',
+        component: 'tools/gen/Edit',
         meta: {
           title: '修改生成配置',
           icon: 'code'

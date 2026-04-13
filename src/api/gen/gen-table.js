@@ -9,6 +9,14 @@ export function getGenTableList(query) {
   })
 }
 
+// 根据id获取代码生成列详细信息
+export function getGenTableById(id) {
+  return request({
+    url: baseUrl + '/' + id,
+    method: 'get'
+  })
+}
+
 export function generateCode(query) {
   return request({
     url: baseUrl + '/generate-code',
@@ -19,10 +27,4 @@ export function generateCode(query) {
 
 export function exportCode(data) {
   return download(baseUrl + '/export-code', data, 'code.zip')
-
-  // return request({
-  //   url: baseUrl + '/export-code',
-  //   method: 'get',
-  //   params: query
-  // })
 }

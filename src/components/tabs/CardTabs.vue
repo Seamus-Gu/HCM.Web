@@ -1,6 +1,6 @@
 <template>
-  <div class="s-tabs">
-    <el-tabs :stretch="true" v-bind="$attrs">
+  <div class="s-card-tabs">
+    <el-tabs type="card" :stretch="true" v-bind="$attrs">
       <slot></slot>
     </el-tabs>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'STabs',
+  name: 'SCardTabs',
   props: {},
   setup() {
     return {}

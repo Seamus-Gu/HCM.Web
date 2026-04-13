@@ -1,16 +1,30 @@
-.s-tabs {
-  .el-tabs {
-    &__item.is-active {
-      color: var(--color-primary-core);
-    }
-    &__item:hover {
-      color: var(--color-primary-core);
-    }
-    &__active-bar {
-      background-color: var(--color-primary-core);
-    }
-    &__item:focus-visible {
-      box-shadow: none !important;
-    }
+.s-card-tabs {
+  --tab-active-bg-color: var(--color-primary-0);
+}
+
+.s-card-tabs {
+  .el-tabs--card > .el-tabs__header {
+    border: none !important;
+  }
+  .el-tabs--card > .el-tabs__header .el-tabs__nav {
+    border-radius: 0.75rem;
+    background-color: var(--el-color-info-light-9);
+    border: 1px solid var(--el-border-color-light) !important;
+  }
+  .el-tabs__item.is-active {
+    padding: 2px;
+    border-radius: 0.5rem;
+    box-shadow: rgb(221, 221, 221) 0rem 0.0625rem 0.3125rem 0.0625rem;
+    background-color: var(--tab-active-bg-color);
+    border: 1px solid var(--el-border-color-light) !important;
+  }
+  .el-tabs--card > .el-tabs__header .el-tabs__item {
+    border: none !important;
+  }
+}
+
+html.dark {
+  .s-card-tabs {
+    --tab-active-bg-color: var(--color-primary-3);
   }
 }
