@@ -251,7 +251,7 @@ $E: null;
   transition: transform getCssVar('transition-duration-fast') ease-in-out;
 
   &:focus-visible {
-    outline: 2px solid getCssVar('color-primary');
+    outline: 2px solid var(--color-primary-core);
     outline-offset: $outline-offset;
   }
 }

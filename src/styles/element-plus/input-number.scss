@@ -55,7 +55,7 @@
     user-select: none;
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
 
       & ~ .#{$namespace}-input:not(.is-disabled) .#{$namespace}-input__wrapper {
         box-shadow: 0 0 0 1px

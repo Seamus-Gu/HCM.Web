@@ -46,7 +46,7 @@
   @include mixed-input-border(#{getCssVar('border-color')});
 
   @include when(focused) {
-    @include mixed-input-border(#{getCssVar('color-primary')});
+    @include mixed-input-border(#{var(--color-primary-core)});
   }
 
   @include when(hovering) {
@@ -162,7 +162,7 @@
       top: 0;
       width: 1px;
       height: var(--el-input-tag-line-height);
-      background-color: getCssVar('color-primary');
+      background-color: var(--color-primary-core);
     }
 
     .#{$namespace}-tag {

@@ -29,9 +29,9 @@
           >
             <s-flex-col v-if="item.component" :span="item.span || 12">
               <s-form-item
+                label-position="top"
                 :label="item.label"
                 :prop="item.name"
-                :label-width="labelWidth"
               >
                 <component
                   v-model="model[item.name]"
@@ -126,7 +126,7 @@ export default {
     // 列宽度
     labelWidth: {
       type: [String, Number],
-      default: '96px'
+      default: '100px'
     },
     confirmLoading: {
       type: Boolean,

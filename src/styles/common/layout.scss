@@ -149,12 +149,12 @@
         .el-tabs {
           width: calc(100% - 40px);
           .el-tabs__header {
-            margin: 0 0 8px 0;
+            margin: 0 0 12px 0;
             border-bottom: 0;
             .el-tabs__item {
+              margin: 0 8px;
               border-radius: 8px;
               border: 1px solid var(--el-border-color-light);
-              margin-right: 8px;
             }
             .el-tabs__nav {
               border: 0;

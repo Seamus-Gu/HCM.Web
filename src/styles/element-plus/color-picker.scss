@@ -52,14 +52,14 @@ $color-picker-size: map.merge($common-component-size, $color-picker-size);
 
   &:focus-visible:not(.is-disabled) {
     .#{$namespace}-color-picker__trigger {
-      outline: 2px solid getCssVar('color-primary');
+      outline: 2px solid var(--color-primary-core);
       outline-offset: 1px;
     }
   }
 
   @include when(focused) {
     .#{$namespace}-color-picker__trigger {
-      border-color: getCssVar('color-primary');
+      border-color: var(--color-primary-core);
     }
   }
 

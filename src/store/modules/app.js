@@ -1,5 +1,6 @@
 const appStore = defineStore('app', {
   state: () => ({
+    language: 'zh-cn',
     size: 'lg', // sm,md,lg
     collapse: false,
     routePath: '/index'

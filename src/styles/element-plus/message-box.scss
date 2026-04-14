@@ -103,7 +103,7 @@
     &:focus,
     &:hover {
       .#{$namespace}-message-box__close {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
       }
     }
   }

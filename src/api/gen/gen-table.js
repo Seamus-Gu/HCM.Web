@@ -12,7 +12,7 @@ export function getGenTableList(query) {
 // 根据id获取代码生成列详细信息
 export function getGenTableById(id) {
   return request({
-    url: baseUrl + '/' + id,
+    url: 'gen/v2/gen-table' + '/' + id,
     method: 'get'
   })
 }

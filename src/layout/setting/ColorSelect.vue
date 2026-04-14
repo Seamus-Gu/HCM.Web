@@ -2,13 +2,13 @@
   <div class="color-select-container">
     <el-row>
       <el-col :span="24">
-        <template v-for="item in coreList" :key="item">
+        <template v-for="item in colorList" :key="item">
           <el-space>
             <div class="color-select-grid cursor-pointer">
               <div
                 class="color"
                 :style="{ background: item.color }"
-                @click="changeColor(item.name)"
+                @click="changeColor(item)"
               ></div>
             </div>
           </el-space>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { coreList } from '@/utils/theme'
+import { colorList } from '@/utils/theme'
 export default {
   setup(props, context) {
     const methods = reactive({
@@ -29,7 +29,7 @@ export default {
     })
 
     return {
-      coreList,
+      colorList,
       ...toRefs(methods)
     }
   }

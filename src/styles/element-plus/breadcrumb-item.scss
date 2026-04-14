@@ -33,7 +33,7 @@
         color: getCssVar('text-color', 'primary');
 
         &:hover {
-          color: getCssVar('color-primary');
+          color: var(--color-primary-core);
           cursor: pointer;
         }
       }

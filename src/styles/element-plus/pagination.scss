@@ -165,7 +165,7 @@
       background-color: getCssVar('pagination-button-bg-color');
 
       &.is-active {
-        background-color: getCssVar('color-primary');
+        background-color: var(--color-primary-core);
         color: getCssVar('color-white');
       }
 

@@ -69,7 +69,7 @@ $directions: rtl, ltr, ttb, btt;
     &:focus,
     &:hover {
       i {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
       }
     }
   }
@@ -101,7 +101,7 @@ $directions: rtl, ltr, ttb, btt;
     }
 
     &:hover::before {
-      background-color: getCssVar('color-primary');
+      background-color: var(--color-primary-core);
     }
   }
 

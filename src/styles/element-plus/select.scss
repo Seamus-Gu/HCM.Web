@@ -45,7 +45,7 @@
     }
 
     @include when(focused) {
-      @include mixed-input-border(#{getCssVar('color-primary')});
+      @include mixed-input-border(#{var(--color-primary-core)});
     }
 
     @include when(hovering) {

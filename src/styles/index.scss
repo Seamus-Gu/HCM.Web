@@ -27,6 +27,14 @@ html {
   --color-primary-7: #003eb3;
   --color-primary-8: #002c8c;
   --color-primary-9: #001d66;
+  --color-primary-hover: #1677ff;
+  --color-primary-active: #0958d9;
+  --color-primary-disabled: #d9d9d9;
+  // --el-color-primary-light-7: #c6e2ff;   // 淡色背景
+  // --el-color-primary-light-8: #d9ecff;   // 边框色
+  // --el-color-primary-light-9: #ecf5ff;   // 浅色背景
+  // --el-color-primary-dark-2: #337ecc;    // 深色（点击态）
+
   --color-primary-box-shadow:
     rgba(0, 62, 179, 0.4) 0 14px 26px -12px,
     rgba(0, 62, 179, 0.15) 0 4px 23px 0, rgba(0, 62, 179, 0.2) 0 8px 10px -5px;

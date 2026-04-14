@@ -31,7 +31,7 @@
   }
 
   .time-select-item.selected:not(.disabled) {
-    color: getCssVar('color-primary');
+    color: var(--color-primary-core);
     font-weight: bold;
   }
 }

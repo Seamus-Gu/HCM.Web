@@ -47,8 +47,8 @@
     }
 
     @include when(finish) {
-      color: getCssVar('color-primary');
-      border-color: getCssVar('color-primary');
+      color: var(--color-primary-core);
+      border-color: var(--color-primary-core);
     }
   }
 
@@ -139,7 +139,7 @@
     }
 
     @include when(finish) {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
   }
 
@@ -167,7 +167,7 @@
     }
 
     @include when(finish) {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
   }
 

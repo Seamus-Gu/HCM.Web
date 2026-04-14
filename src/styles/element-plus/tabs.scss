@@ -21,7 +21,7 @@
     bottom: 0;
     left: 0;
     height: 2px;
-    background-color: getCssVar('color-primary');
+    background-color: var(--color-primary-core);
     z-index: 1;
     transition:
       width getCssVar('transition-duration')
@@ -61,7 +61,7 @@
     }
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
   }
   @include e(new-tab-vertical) {
@@ -153,7 +153,7 @@
     }
 
     &:focus-visible {
-      box-shadow: 0 0 2px 2px getCssVar('color-primary') inset;
+      box-shadow: 0 0 2px 2px var(--color-primary-core) inset;
       border-radius: 3px;
     }
 
@@ -176,11 +176,11 @@
     }
 
     @include when(active) {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
       cursor: pointer;
     }
 
@@ -283,11 +283,12 @@
     }
   }
   @include m(border-card) {
+    border-radius: 0.5rem;
     background: getCssVar('bg-color', 'overlay');
     border: 1px solid getCssVar('border-color');
 
     > .#{$namespace}-tabs__content {
-      padding: 15px;
+      padding: 1rem 1rem 2rem 1rem;
     }
     > .#{$namespace}-tabs__header {
       background-color: getCssVar('fill-color', 'light');
@@ -313,14 +314,14 @@
       }
 
       &.is-active {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
         background-color: getCssVar('bg-color', 'overlay');
         border-right-color: getCssVar('border-color');
         border-left-color: getCssVar('border-color');
       }
 
       &:not(.is-disabled):hover {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
       }
 
       &.is-disabled {

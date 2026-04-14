@@ -145,7 +145,7 @@ const querySchema = [
     }
   },
   {
-    label: t('gen.gen-table.tableName'),
+    label: t('gen.gen-table.table-name'),
     name: 'tableName',
     component: 'input'
   }
@@ -158,7 +158,7 @@ const columns = [
     sortable: true
   },
   {
-    label: t('gen.gen-table.tableName'),
+    label: t('gen.gen-table.table-name'),
     name: 'tableName',
     sortable: true
   },

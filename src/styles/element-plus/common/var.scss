@@ -19,23 +19,23 @@ $colors: map.deep-merge(
     'white': #ffffff,
     'black': #000000,
     'primary': (
-      'base': #409eff,
+      'base': #409eff
     ),
     'success': (
-      'base': #67c23a,
+      'base': #67c23a
     ),
     'warning': (
-      'base': #e6a23c,
+      'base': #e6a23c
     ),
     'danger': (
-      'base': #f56c6c,
+      'base': #f56c6c
     ),
     'error': (
-      'base': #f56c6c,
+      'base': #f56c6c
     ),
     'info': (
-      'base': #909399,
-    ),
+      'base': #909399
+    )
   ),
   $colors
 );
@@ -66,8 +66,8 @@ $color-info: map.get($colors, 'info', 'base') !default;
               map.get($colors, $type, 'base'),
               math.percentage(math.div($number, 10))
             )
-          ),
-      ),
+          )
+      )
     ),
     $colors
   ) !global;
@@ -102,7 +102,7 @@ $text-color: map.merge(
     'regular': #606266,
     'secondary': #909399,
     'placeholder': #a8abb2,
-    'disabled': #c0c4cc,
+    'disabled': #c0c4cc
   ),
   $text-color
 );
@@ -115,7 +115,7 @@ $border-color: map.merge(
     'lighter': #ebeef5,
     'extra-light': #f2f6fc,
     'dark': #d4d7de,
-    'darker': #cdd0d6,
+    'darker': #cdd0d6
   ),
   $border-color
 );
@@ -129,7 +129,7 @@ $fill-color: map.merge(
     'extra-light': #fafcff,
     'dark': #ebedf0,
     'darker': #e6e8eb,
-    'blank': #ffffff,
+    'blank': #ffffff
   ),
   $fill-color
 );
@@ -140,7 +140,7 @@ $bg-color: map.merge(
   (
     '': #ffffff,
     'page': #f2f3f5,
-    'overlay': #ffffff,
+    'overlay': #ffffff
   ),
   $bg-color
 );
@@ -156,7 +156,7 @@ $border-radius: map.merge(
     'base': 4px,
     'small': 2px,
     'round': 20px,
-    'circle': 100%,
+    'circle': 100%
   ),
   $border-radius
 );
@@ -167,19 +167,19 @@ $box-shadow: map.merge(
   (
     '': (
       0px 12px 32px 4px rgba(0, 0, 0, 0.04),
-      0px 8px 20px rgba(0, 0, 0, 0.08),
+      0px 8px 20px rgba(0, 0, 0, 0.08)
     ),
     'light': (
-      0px 0px 12px rgba(0, 0, 0, 0.12),
+      0px 0px 12px rgba(0, 0, 0, 0.12)
     ),
     'lighter': (
-      0px 0px 6px rgba(0, 0, 0, 0.12),
+      0px 0px 6px rgba(0, 0, 0, 0.12)
     ),
     'dark': (
       0px 16px 48px 16px rgba(0, 0, 0, 0.08),
       0px 12px 32px rgba(0, 0, 0, 0.12),
-      0px 8px 16px -8px rgba(0, 0, 0, 0.16),
-    ),
+      0px 8px 16px -8px rgba(0, 0, 0, 0.16)
+    )
   ),
   $box-shadow
 );
@@ -203,7 +203,7 @@ $font-size: map.merge(
     'medium': 16px,
     'base': 14px,
     'small': 13px,
-    'extra-small': 12px,
+    'extra-small': 12px
   ),
   $font-size
 );
@@ -214,7 +214,7 @@ $z-index: map.merge(
   (
     'normal': 1,
     'top': 1000,
-    'popper': 2000,
+    'popper': 2000
   ),
   $z-index
 );
@@ -225,7 +225,7 @@ $disabled: map.merge(
   (
     'bg-color': getCssVar('fill-color', 'light'),
     'text-color': getCssVar('text-color', 'placeholder'),
-    'border-color': getCssVar('border-color', 'light'),
+    'border-color': getCssVar('border-color', 'light')
   ),
   $disabled
 );
@@ -235,7 +235,7 @@ $common-component-size: map.merge(
   (
     'large': 40px,
     'default': 32px,
-    'small': 24px,
+    'small': 24px
   ),
   $common-component-size
 );
@@ -246,7 +246,7 @@ $overlay-color: map.merge(
   (
     '': rgba(0, 0, 0, 0.8),
     'light': rgba(0, 0, 0, 0.7),
-    'lighter': rgba(0, 0, 0, 0.5),
+    'lighter': rgba(0, 0, 0, 0.5)
   ),
   $overlay-color
 );
@@ -256,7 +256,7 @@ $mask-color: () !default;
 $mask-color: map.merge(
   (
     '': rgba(255, 255, 255, 0.9),
-    'extra-light': rgba(255, 255, 255, 0.3),
+    'extra-light': rgba(255, 255, 255, 0.3)
   ),
   $mask-color
 );
@@ -282,11 +282,11 @@ $checkbox: map.merge(
     'disabled-checked-input-fill': getCssVar('border-color-extra-light'),
     'disabled-checked-input-border-color': getCssVar('border-color'),
     'disabled-checked-icon-color': getCssVar('text-color-placeholder'),
-    'checked-text-color': getCssVar('color-primary'),
-    'checked-input-border-color': getCssVar('color-primary'),
-    'checked-bg-color': getCssVar('color-primary'),
+    'checked-text-color': var(--color-primary-core),
+    'checked-input-border-color': var(--color-primary-core),
+    'checked-bg-color': var(--color-primary-core),
     'checked-icon-color': getCssVar('color', 'white'),
-    'input-border-color-hover': getCssVar('color-primary'),
+    'input-border-color-hover': var(--color-primary-core)
   ),
   $checkbox
 );
@@ -294,10 +294,10 @@ $checkbox: map.merge(
 $checkbox-button: () !default;
 $checkbox-button: map.merge(
   (
-    'checked-bg-color': getCssVar('color-primary'),
+    'checked-bg-color': var(--color-primary-core),
     'checked-text-color': getCssVar('color-white'),
-    'checked-border-color': getCssVar('color-primary'),
-    'disabled-checked-fill': getCssVar('border-color-extra-light'),
+    'checked-border-color': var(--color-primary-core),
+    'disabled-checked-fill': getCssVar('border-color-extra-light')
   ),
   $checkbox-button
 );
@@ -307,7 +307,7 @@ $checkbox-bordered-padding-left: map.merge(
   (
     'large': 12px,
     'default': 10px,
-    'small': 8px,
+    'small': 8px
   ),
   $checkbox-bordered-padding-left
 );
@@ -317,7 +317,7 @@ $checkbox-bordered-padding-right: map.merge(
   (
     'large': 20px,
     'default': 16px,
-    'small': 12px,
+    'small': 12px
   ),
   $checkbox-bordered-padding-right
 );
@@ -336,7 +336,7 @@ $radio: map.merge(
     'input-bg-color': getCssVar('fill-color', 'blank'),
     'input-border': getCssVar('border'),
     'input-border-color': getCssVar('border-color'),
-    'input-border-color-hover': getCssVar('color-primary'),
+    'input-border-color-hover': var(--color-primary-core)
   ),
   $radio
 );
@@ -347,10 +347,10 @@ $radio-height: map.merge($common-component-size, $radio-height);
 $radio-button: () !default;
 $radio-button: map.merge(
   (
-    'checked-bg-color': getCssVar('color-primary'),
+    'checked-bg-color': var(--color-primary-core),
     'checked-text-color': getCssVar('color-white'),
-    'checked-border-color': getCssVar('color-primary'),
-    'disabled-checked-fill': getCssVar('border-color-extra-light'),
+    'checked-border-color': var(--color-primary-core),
+    'disabled-checked-fill': getCssVar('border-color-extra-light')
   ),
   $radio-button
 );
@@ -363,7 +363,7 @@ $radio-disabled: map.merge(
     'icon-color': getCssVar('disabled-bg-color'),
     'checked-input-border-color': getCssVar('disabled-border-color'),
     'checked-input-fill': getCssVar('disabled-bg-color'),
-    'checked-icon-color': getCssVar('text-color-placeholder'),
+    'checked-icon-color': getCssVar('text-color-placeholder')
   ),
   $radio-disabled
 );
@@ -371,9 +371,9 @@ $radio-disabled: map.merge(
 $radio-checked: () !default;
 $radio-checked: map.merge(
   (
-    'text-color': getCssVar('color-primary'),
-    'input-border-color': getCssVar('color-primary'),
-    'icon-color': getCssVar('color-primary'),
+    'text-color': var(--color-primary-core),
+    'input-border-color': var(--color-primary-core),
+    'icon-color': var(--color-primary-core)
   ),
   $radio-checked
 );
@@ -383,7 +383,7 @@ $radio-bordered-input-height: map.merge(
   (
     'large': 14px,
     'default': 12px,
-    'small': 12px,
+    'small': 12px
   ),
   $radio-bordered-input-height
 );
@@ -393,7 +393,7 @@ $radio-bordered-input-width: map.merge(
   (
     'large': 14px,
     'default': 12px,
-    'small': 12px,
+    'small': 12px
   ),
   $radio-bordered-input-width
 );
@@ -409,9 +409,9 @@ $select: map.merge(
     'close-hover-color': getCssVar('text-color-secondary'),
     'input-color': getCssVar('text-color-placeholder'),
     'multiple-input-color': getCssVar('text-color-regular'),
-    'input-focus-border-color': getCssVar('color-primary'),
+    'input-focus-border-color': var(--color-primary-core),
     'input-font-size': 14px,
-    'width': 100%,
+    'width': 100%
   ),
   $select
 );
@@ -423,7 +423,7 @@ $select-option: map.merge(
     'disabled-color': getCssVar('text-color-placeholder'),
     'height': 34px,
     'hover-background': getCssVar('fill-color', 'light'),
-    'selected-text-color': getCssVar('color-primary'),
+    'selected-text-color': var(--color-primary-core)
   ),
   $select-option
 );
@@ -433,7 +433,7 @@ $select-group: map.merge(
   (
     'text-color': getCssVar('color-info'),
     'height': 34px,
-    'font-size': 12px,
+    'font-size': 12px
   ),
   $select-group
 );
@@ -449,7 +449,7 @@ $select-dropdown: map.merge(
     'empty-padding': 10px 0,
     'header-padding': 10px,
     'footer-padding': 10px,
-    'border': 1px solid getCssVar('border-color-light'),
+    'border': 1px solid getCssVar('border-color-light')
   ),
   $select-dropdown
 );
@@ -459,7 +459,7 @@ $select-wrapper-padding: map.merge(
   (
     'large': 8px 16px,
     'default': 4px 12px,
-    'small': 2px 8px,
+    'small': 2px 8px
   ),
   $select-wrapper-padding
 );
@@ -469,7 +469,7 @@ $select-near-margin-left: map.merge(
   (
     'large': -8px,
     'default': -8px,
-    'small': -6px,
+    'small': -6px
   ),
   $select-near-margin-left
 );
@@ -479,7 +479,7 @@ $select-item-gap: map.merge(
   (
     'large': 6px,
     'default': 6px,
-    'small': 4px,
+    'small': 4px
   ),
   $select-item-gap
 );
@@ -490,7 +490,7 @@ $select-item-height: map.merge(
   (
     'large': 24px,
     'default': 24px,
-    'small': 20px,
+    'small': 20px
   ),
   $select-item-height
 );
@@ -508,7 +508,7 @@ $alert: map.merge(
     'close-font-size': 16px,
     'close-customed-font-size': 14px,
     'icon-size': 16px,
-    'icon-large-size': 28px,
+    'icon-large-size': 28px
   ),
   $alert
 );
@@ -527,7 +527,7 @@ $messagebox: map.merge(
     'content-color': getCssVar('text-color-regular'),
     'error-font-size': 12px,
     'padding-primary': 12px,
-    'font-line-height': getCssVar('font-line-height-primary'),
+    'font-line-height': getCssVar('font-line-height-primary')
   ),
   $messagebox
 );
@@ -542,7 +542,7 @@ $message: map.merge(
     'padding': 11px 15px,
     'close-size': 16px,
     'close-icon-color': getCssVar('text-color-placeholder'),
-    'close-hover-color': getCssVar('text-color-secondary'),
+    'close-hover-color': getCssVar('text-color-secondary')
   ),
   $message
 );
@@ -569,7 +569,7 @@ $notification: map.merge(
     'title-font-size': 16px,
     'title-color': getCssVar('text-color-primary'),
     'close-color': getCssVar('text-color-secondary'),
-    'close-hover-color': getCssVar('text-color-regular'),
+    'close-hover-color': getCssVar('text-color-regular')
   ),
   $notification
 );
@@ -582,7 +582,7 @@ $input: map.merge(
     'text-color': getCssVar('text-color-regular'),
     'border': getCssVar('border'),
     'hover-border': getCssVar('border-color-hover'),
-    'focus-border': getCssVar('color-primary'),
+    'focus-border': var(--color-primary-core),
     'transparent-border': 0 0 0 1px transparent inset,
     'border-color': getCssVar('border-color'),
     'border-radius': getCssVar('border-radius-base'),
@@ -591,8 +591,8 @@ $input: map.merge(
     'placeholder-color': getCssVar('text-color-placeholder'),
     'hover-border-color': getCssVar('border-color-hover'),
     'clear-hover-color': getCssVar('text-color-secondary'),
-    'focus-border-color': getCssVar('color-primary'),
-    'width': 100%,
+    'focus-border-color': var(--color-primary-core),
+    'width': 100%
   ),
   $input
 );
@@ -603,7 +603,7 @@ $input-disabled: map.merge(
     'fill': getCssVar('disabled-bg-color'),
     'border': getCssVar('disabled-border-color'),
     'text-color': getCssVar('disabled-text-color'),
-    'placeholder-color': getCssVar('text-color-placeholder'),
+    'placeholder-color': getCssVar('text-color-placeholder')
   ),
   $input-disabled
 );
@@ -613,7 +613,7 @@ $input-font-size: map.merge(
   (
     'large': 14px,
     'default': 14px,
-    'small': 12px,
+    'small': 12px
   ),
   $input-font-size
 );
@@ -629,7 +629,7 @@ $input-number-width: map.merge(
   (
     'large': 180px,
     'default': 150px,
-    'small': 120px,
+    'small': 120px
   ),
   $input-number-width
 );
@@ -639,7 +639,7 @@ $input-padding-horizontal: map.merge(
   (
     'large': 16px,
     'default': 12px,
-    'small': 8px,
+    'small': 8px
   ),
   $input-padding-horizontal
 );
@@ -650,7 +650,7 @@ $cascader: () !default;
 $cascader: map.merge(
   (
     'menu-text-color': getCssVar('text-color-regular'),
-    'menu-selected-text-color': getCssVar('color-primary'),
+    'menu-selected-text-color': var(--color-primary-core),
     'menu-fill': getCssVar('bg-color', 'overlay'),
     'menu-font-size': getCssVar('font-size-base'),
     'menu-radius': getCssVar('border-radius-base'),
@@ -659,7 +659,7 @@ $cascader: map.merge(
     'node-background-hover': getCssVar('fill-color', 'light'),
     'node-color-disabled': getCssVar('text-color-placeholder'),
     'color-empty': getCssVar('text-color-placeholder'),
-    'tag-background': getCssVar('fill-color'),
+    'tag-background': getCssVar('fill-color')
   ),
   $cascader
 );
@@ -669,7 +669,7 @@ $cascader-item-gap: map.merge(
   (
     'large': 6px,
     'default': 6px,
-    'small': 4px,
+    'small': 4px
   ),
   $cascader-item-gap
 );
@@ -679,7 +679,7 @@ $cascader-wrapper-padding: map.merge(
   (
     'large': 8px,
     'default': 4px,
-    'small': 2px,
+    'small': 2px
   ),
   $cascader-wrapper-padding
 );
@@ -689,7 +689,7 @@ $cascader-item-height: map.merge(
   (
     'large': 24px,
     'default': 24px,
-    'small': 20px,
+    'small': 20px
   ),
   $cascader-item-height
 );
@@ -699,7 +699,7 @@ $cascader-search-input-margin-left: map.merge(
   (
     'large': 7px,
     'default': 7px,
-    'small': 5px,
+    'small': 5px
   ),
   $cascader-search-input-margin-left
 );
@@ -709,7 +709,7 @@ $cascader-dropdown: map.merge(
   (
     'header-padding': 10px,
     'footer-padding': 10px,
-    'border': 1px solid getCssVar('border-color-light'),
+    'border': 1px solid getCssVar('border-color-light')
   ),
   $cascader-dropdown
 );
@@ -724,7 +724,7 @@ $statistic: map.merge(
     'title-color': getCssVar('text-color', 'regular'),
     'content-font-weight': 400,
     'content-font-size': getCssVar('font-size', 'extra-large'),
-    'content-color': getCssVar('text-color', 'primary'),
+    'content-color': getCssVar('text-color', 'primary')
   ),
   $statistic
 );
@@ -741,15 +741,15 @@ $button: map.merge(
     'disabled-bg-color': getCssVar('fill-color', 'blank'),
     'disabled-border-color': getCssVar('border-color-light'),
     'divide-border-color': rgba($color-white, 0.5),
-    'hover-text-color': getCssVar('color-primary'),
+    'hover-text-color': var(--color-primary-core),
     'hover-bg-color': getCssVar('color-primary', 'light-9'),
     'hover-border-color': getCssVar('color-primary-light-7'),
     'active-text-color': getCssVar('button-hover-text-color'),
-    'active-border-color': getCssVar('color-primary'),
+    'active-border-color': var(--color-primary-core),
     'active-bg-color': getCssVar('button', 'hover-bg-color'),
     'outline-color': getCssVar('color-primary', 'light-5'),
     'hover-link-text-color': getCssVar('text-color', 'secondary'),
-    'active-color': getCssVar('text-color', 'primary'),
+    'active-color': getCssVar('text-color', 'primary')
   ),
   $button
 );
@@ -767,14 +767,14 @@ $button-text-color: () !default;
 @each $type in $types {
   $button-border-color: map.merge(
     (
-      $type: map.get($colors, $type, 'base'),
+      $type: map.get($colors, $type, 'base')
     ),
     $button-border-color
   ) !global;
 
   $button-bg-color: map.merge(
     (
-      $type: map.get($colors, $type, 'base'),
+      $type: map.get($colors, $type, 'base')
     ),
     $button-bg-color
   ) !global;
@@ -785,7 +785,7 @@ $button-font-size: map.merge(
   (
     'large': getCssVar('font-size', 'base'),
     'default': getCssVar('font-size', 'base'),
-    'small': 12px,
+    'small': 12px
   ),
   $button-font-size
 );
@@ -795,7 +795,7 @@ $button-border-radius: map.merge(
   (
     'large': getCssVar('border-radius', 'base'),
     'default': getCssVar('border-radius', 'base'),
-    'small': calc(#{getCssVar('border-radius', 'base')} - 1px),
+    'small': calc(#{getCssVar('border-radius', 'base')} - 1px)
   ),
   $button-border-radius
 );
@@ -805,7 +805,7 @@ $button-padding-vertical: map.merge(
   (
     'large': 13px,
     'default': 9px,
-    'small': 6px,
+    'small': 6px
   ),
   $button-padding-vertical
 );
@@ -815,7 +815,7 @@ $button-padding-horizontal: map.merge(
   (
     'large': 20px,
     'default': 16px,
-    'small': 12px,
+    'small': 12px
   ),
   $button-padding-horizontal
 );
@@ -825,8 +825,8 @@ $button-padding-horizontal: map.merge(
 $switch: () !default;
 $switch: map.merge(
   (
-    'on-color': getCssVar('color-primary'),
-    'off-color': getCssVar('border-color'),
+    'on-color': var(--color-primary-core),
+    'off-color': getCssVar('border-color')
   ),
   $switch
 );
@@ -844,7 +844,7 @@ $dialog: map.merge(
     'content-font-size': 14px,
     'font-line-height': getCssVar('font-line-height-primary'),
     'padding-primary': 16px,
-    'border-radius': getCssVar('border-radius-base'),
+    'border-radius': getCssVar('border-radius-base')
   ),
   $dialog
 );
@@ -864,7 +864,7 @@ $tour: map.merge(
     'font-size': 14px,
     'color': getCssVar('text-color-primary'),
     'bg-color': getCssVar('bg-color'),
-    'border-radius': 4px,
+    'border-radius': 4px
   ),
   $tour
 );
@@ -879,9 +879,9 @@ $anchor: map.merge(
     'line-height': 22px,
     'font-size': 12px,
     'color': getCssVar('text-color-secondary'),
-    'active-color': getCssVar('color-primary'),
+    'active-color': var(--color-primary-core),
     'hover-color': getCssVar('text-color-regular'),
-    'marker-bg-color': getCssVar('color-primary'),
+    'marker-bg-color': var(--color-primary-core)
   ),
   $anchor
 );
@@ -895,12 +895,12 @@ $segmented: map.merge(
     'bg-color': getCssVar('fill-color', 'light'),
     'padding': 2px,
     'item-selected-color': getCssVar('color-white'),
-    'item-selected-bg-color': getCssVar('color-primary'),
+    'item-selected-bg-color': var(--color-primary-core),
     'item-selected-disabled-bg-color': getCssVar('color-primary', 'light-5'),
     'item-hover-color': getCssVar('text-color', 'primary'),
     'item-hover-bg-color': getCssVar('fill-color', 'dark'),
     'item-active-bg-color': getCssVar('fill-color', 'darker'),
-    'item-disabled-color': getCssVar('text-color', 'placeholder'),
+    'item-disabled-color': getCssVar('text-color', 'placeholder')
   ),
   $segmented
 );
@@ -918,14 +918,14 @@ $mention: map.merge(
     'option-height': 34px,
     'option-min-width': 100px,
     'option-hover-background': getCssVar('fill-color', 'light'),
-    'option-selected-color': getCssVar('color-primary'),
+    'option-selected-color': var(--color-primary-core),
     'option-disabled-color': getCssVar('text-color-placeholder'),
     'option-loading-color': getCssVar('text-color-secondary'),
     'option-loading-padding': 10px 0,
     'max-height': 174px,
     'padding': 6px 0,
     'header-padding': 10px,
-    'footer-padding': 10px,
+    'footer-padding': 10px
   ),
   $mention
 );
@@ -942,8 +942,8 @@ $input-tag: map.merge(
     'font-size': getCssVar('font-size-base'),
     'close-hover-color': getCssVar('text-color-secondary'),
     'text-color': getCssVar('text-color-regular'),
-    'input-focus-border-color': getCssVar('color-primary'),
-    'width': 100%,
+    'input-focus-border-color': var(--color-primary-core),
+    'width': 100%
   ),
   $input-tag
 );
@@ -953,7 +953,7 @@ $input-tag-padding: map.merge(
   (
     'large': 8px,
     'default': 4px,
-    'small': 2px,
+    'small': 2px
   ),
   $input-tag-padding
 );
@@ -963,7 +963,7 @@ $input-tag-inner-padding: map.merge(
   (
     'large': 8px,
     'default': 8px,
-    'small': 6px,
+    'small': 6px
   ),
   $input-tag-inner-padding
 );
@@ -973,7 +973,7 @@ $input-tag-gap: map.merge(
   (
     'large': 6px,
     'default': 6px,
-    'small': 4px,
+    'small': 4px
   ),
   $input-tag-gap
 );
@@ -996,7 +996,7 @@ $table: map.merge(
     'expanded-cell-bg-color': getCssVar('fill-color', 'blank'),
     'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
     'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
-    'index': getCssVar('index-normal'),
+    'index': getCssVar('index-normal')
   ),
   $table
 );
@@ -1006,7 +1006,7 @@ $table-font-size: map.merge(
   (
     'large': getCssVar('font-size', 'base'),
     'default': getCssVar('font-size', 'base'),
-    'small': getCssVar('font-size', 'extra-small'),
+    'small': getCssVar('font-size', 'extra-small')
   ),
   $table-font-size
 );
@@ -1016,7 +1016,7 @@ $table-padding: map.merge(
   (
     'large': 12px 0,
     'default': 8px 0,
-    'small': 4px 0,
+    'small': 4px 0
   ),
   $table-padding
 );
@@ -1026,7 +1026,7 @@ $table-cell-padding: map.merge(
   (
     'large': 0 16px,
     'default': 0 12px,
-    'small': 0 8px,
+    'small': 0 8px
   ),
   $table-cell-padding
 );
@@ -1046,13 +1046,13 @@ $pagination: map.merge(
     'button-disabled-color': getCssVar('text-color-placeholder'),
     'button-disabled-bg-color': getCssVar('fill-color', 'blank'),
     'button-bg-color': getCssVar('fill-color'),
-    'hover-color': getCssVar('color-primary'),
+    'hover-color': var(--color-primary-core),
     'font-size-small': 12px,
     'button-width-small': 24px,
     'button-height-small': 24px,
     'button-width-large': 40px,
     'button-height-large': 40px,
-    'item-gap': 16px,
+    'item-gap': 16px
   ),
   $pagination
 );
@@ -1063,7 +1063,7 @@ $popup: () !default;
 $popup: map.merge(
   (
     'modal-bg-color': getCssVar('color-black'),
-    'modal-opacity': 0.5,
+    'modal-opacity': 0.5
   ),
   $popup
 );
@@ -1080,7 +1080,7 @@ $popover: map.merge(
     'padding-large': 18px 20px,
     'title-font-size': 16px,
     'title-text-color': getCssVar('text-color-primary'),
-    'border-radius': 4px,
+    'border-radius': 4px
   ),
   $popover
 );
@@ -1092,7 +1092,7 @@ $popper: map.merge(
   (
     'border-radius': var(#{getCssVarName('popover-border-radius')}, 4px),
     'bg-color-light': getCssVar('bg-color', 'overlay'),
-    'bg-color-dark': getCssVar('text-color', 'primary'),
+    'bg-color-dark': getCssVar('text-color', 'primary')
   ),
   $popper
 );
@@ -1102,7 +1102,7 @@ $skeleton: () !default;
 $skeleton: map.merge(
   (
     'color': getCssVar('fill-color'),
-    'to-color': getCssVar('fill-color', 'darker'),
+    'to-color': getCssVar('fill-color', 'darker')
   ),
   $skeleton
 );
@@ -1114,7 +1114,7 @@ $tag: map.merge(
   (
     'font-size': 12px,
     'border-radius': 4px,
-    'border-radius-rounded': 9999px,
+    'border-radius-rounded': 9999px
   ),
   $tag
 );
@@ -1124,7 +1124,7 @@ $tag-height: map.merge(
   (
     'large': 32px,
     'default': 24px,
-    'small': 20px,
+    'small': 20px
   ),
   $tag-height
 );
@@ -1134,7 +1134,7 @@ $tag-padding: map.merge(
   (
     'large': 12px,
     'default': 10px,
-    'small': 8px,
+    'small': 8px
   ),
   $tag-padding
 );
@@ -1144,7 +1144,7 @@ $tag-icon-size: map.merge(
   (
     'large': 16px,
     'default': 14px,
-    'small': 12px,
+    'small': 12px
   ),
   $tag-icon-size
 );
@@ -1155,7 +1155,7 @@ $text: () !default;
 $text: map.merge(
   (
     'font-size': getCssVar('font-size', 'base'),
-    'color': getCssVar('text-color', 'regular'),
+    'color': getCssVar('text-color', 'regular')
   ),
   $text
 );
@@ -1165,7 +1165,7 @@ $text-font-size: map.merge(
   (
     'large': getCssVar('font-size', 'medium'),
     'default': getCssVar('font-size', 'base'),
-    'small': getCssVar('font-size', 'extra-small'),
+    'small': getCssVar('font-size', 'extra-small')
   ),
   $text-font-size
 );
@@ -1178,7 +1178,7 @@ $tree: map.merge(
     'node-content-height': 26px,
     'node-hover-bg-color': getCssVar('fill-color', 'light'),
     'text-color': getCssVar('text-color-regular'),
-    'expand-icon-color': getCssVar('text-color-placeholder'),
+    'expand-icon-color': getCssVar('text-color-placeholder')
   ),
   $tree
 );
@@ -1189,8 +1189,8 @@ $dropdown: map.merge(
   (
     'menu-box-shadow': getCssVar('box-shadow-light'),
     'menuItem-hover-fill': getCssVar('color-primary-light-9'),
-    'menuItem-hover-color': getCssVar('color-primary'),
-    'menu-index': 10,
+    'menuItem-hover-color': var(--color-primary-core),
+    'menu-index': 10
   ),
   $dropdown
 );
@@ -1204,7 +1204,7 @@ $drawer: map.merge(
         #{getCssVar('bg-color')}
       ),
     'padding-primary': var(#{getCssVarName('dialog', 'padding-primary')}, 20px),
-    'dragger-size': 8px,
+    'dragger-size': 8px
   ),
   $drawer
 );
@@ -1218,7 +1218,7 @@ $badge: map.merge(
     'radius': 10px,
     'font-size': 12px,
     'padding': 6px,
-    'size': 18px,
+    'size': 18px
   ),
   $badge
 );
@@ -1230,7 +1230,7 @@ $card: map.merge(
     'border-color': getCssVar('border-color', 'light'),
     'border-radius': 4px,
     'padding': 20px,
-    'bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('fill-color', 'blank')
   ),
   $card
 );
@@ -1240,7 +1240,7 @@ $card: map.merge(
 $slider: () !default;
 $slider: map.merge(
   (
-    'main-bg-color': getCssVar('color-primary'),
+    'main-bg-color': var(--color-primary-core),
     'runway-bg-color': getCssVar('border-color-light'),
     'stop-bg-color': getCssVar('color-white'),
     'disabled-color': getCssVar('text-color-placeholder'),
@@ -1248,7 +1248,7 @@ $slider: map.merge(
     'height': 6px,
     'button-size': 20px,
     'button-wrapper-size': 36px,
-    'button-wrapper-offset': -15px,
+    'button-wrapper-offset': -15px
   ),
   $slider
 );
@@ -1258,9 +1258,9 @@ $slider: map.merge(
 $menu: () !default;
 $menu: map.merge(
   (
-    'active-color': getCssVar('color-primary'),
+    'active-color': var(--color-primary-core),
     'text-color': getCssVar('text-color-primary'),
-    'hover-text-color': getCssVar('color-primary'),
+    'hover-text-color': var(--color-primary-core),
     'bg-color': getCssVar('fill-color', 'blank'),
     'hover-bg-color': getCssVar('color-primary-light-9'),
     'item-height': 56px,
@@ -1272,7 +1272,7 @@ $menu: map.merge(
     'border-color': getCssVar('border-color'),
     'base-level-padding': 20px,
     'level-padding': 20px,
-    'icon-width': 24px,
+    'icon-width': 24px
   ),
   $menu
 );
@@ -1291,7 +1291,7 @@ $rate: map.merge(
     'fill-color': #f7ba2a,
     'disabled-void-color': getCssVar('fill-color'),
     'text-color': getCssVar('text-color', 'primary'),
-    'outline-color': getCssVar('color-primary', 'light-5'),
+    'outline-color': getCssVar('color-primary', 'light-5')
   ),
   $rate
 );
@@ -1301,7 +1301,7 @@ $rate: map.merge(
 $colorpicker: () !default;
 $colorpicker: map.merge(
   (
-    'bg-color': getCssVar('bg-color', 'overlay'),
+    'bg-color': getCssVar('bg-color', 'overlay')
   ),
   $colorpicker
 );
@@ -1319,9 +1319,9 @@ $datepicker: map.merge(
     'inner-border-color': getCssVar('border-color-light'),
     'inrange-bg-color': getCssVar('border-color-extra-light'),
     'inrange-hover-bg-color': getCssVar('border-color-extra-light'),
-    'active-color': getCssVar('color-primary'),
-    'hover-text-color': getCssVar('color-primary'),
-    'bg-color': getCssVar('bg-color', 'overlay'),
+    'active-color': var(--color-primary-core),
+    'hover-text-color': var(--color-primary-core),
+    'bg-color': getCssVar('bg-color', 'overlay')
   ),
   $datepicker
 );
@@ -1332,7 +1332,7 @@ $date-editor: map.merge(
     'width': 220px,
     'monthrange-width': 300px,
     'daterange-width': 350px,
-    'datetimerange-width': 400px,
+    'datetimerange-width': 400px
   ),
   $date-editor
 );
@@ -1343,7 +1343,7 @@ $loading: () !default;
 $loading: map.merge(
   (
     'spinner-size': 42px,
-    'fullscreen-spinner-size': 50px,
+    'fullscreen-spinner-size': 50px
   ),
   $loading
 );
@@ -1356,7 +1356,7 @@ $scrollbar: map.merge(
     'opacity': 0.3,
     'bg-color': getCssVar('text-color-secondary'),
     'hover-opacity': 0.5,
-    'hover-bg-color': getCssVar('text-color-secondary'),
+    'hover-bg-color': getCssVar('text-color-secondary')
   ),
   $scrollbar
 );
@@ -1374,7 +1374,7 @@ $carousel: map.merge(
     'indicator-height': 2px,
     'indicator-padding-horizontal': 4px,
     'indicator-padding-vertical': 12px,
-    'indicator-out-color': getCssVar('border-color-hover'),
+    'indicator-out-color': getCssVar('border-color-hover')
   ),
   $carousel
 );
@@ -1391,7 +1391,7 @@ $collapse: map.merge(
     'header-font-size': 13px,
     'content-bg-color': getCssVar('fill-color', 'blank'),
     'content-font-size': 13px,
-    'content-text-color': getCssVar('text-color-primary'),
+    'content-text-color': getCssVar('text-color-primary')
   ),
   $collapse
 );
@@ -1409,7 +1409,7 @@ $transfer: map.merge(
     'panel-footer-height': 40px,
     'panel-body-height': 278px,
     'item-height': 30px,
-    'filter-height': 32px,
+    'filter-height': 32px
   ),
   $transfer
 );
@@ -1421,7 +1421,7 @@ $timeline: map.merge(
   (
     'node-size-normal': 12px,
     'node-size-large': 14px,
-    'node-color': getCssVar('border-color-light'),
+    'node-color': getCssVar('border-color-light')
   ),
   $timeline
 );
@@ -1431,7 +1431,7 @@ $timeline: map.merge(
 $tabs: () !default;
 $tabs: map.merge(
   (
-    'header-height': 40px,
+    'header-height': 40px
   ),
   $tabs
 );
@@ -1442,8 +1442,8 @@ $backtop: () !default;
 $backtop: map.merge(
   (
     'bg-color': getCssVar('bg-color', 'overlay'),
-    'text-color': getCssVar('color-primary'),
-    'hover-bg-color': getCssVar('border-color-extra-light'),
+    'text-color': var(--color-primary-core),
+    'hover-bg-color': getCssVar('border-color-extra-light')
   ),
   $backtop
 );
@@ -1456,8 +1456,8 @@ $link: map.merge(
     'font-size': getCssVar('font-size-base'),
     'font-weight': getCssVar('font-weight-primary'),
     'text-color': getCssVar('text-color-regular'),
-    'hover-text-color': getCssVar('color-primary'),
-    'disabled-text-color': getCssVar('text-color-placeholder'),
+    'hover-text-color': var(--color-primary-core),
+    'disabled-text-color': getCssVar('text-color-placeholder')
   ),
   $link
 );
@@ -1468,7 +1468,7 @@ $link-text-color: () !default;
   $link-text-color: map.merge(
     $link-text-color,
     (
-      $type: map.get($colors, $type, 'base'),
+      $type: map.get($colors, $type, 'base')
     )
   ) !global;
 }
@@ -1484,7 +1484,7 @@ $calendar: map.merge(
       ),
     'header-border-bottom': getCssVar('calendar-border'),
     'selected-bg-color': getCssVar('color', 'primary', 'light-9'),
-    'cell-width': 85px,
+    'cell-width': 85px
   ),
   $calendar
 );
@@ -1495,7 +1495,7 @@ $form: () !default;
 $form: map.merge(
   (
     'label-font-size': getCssVar('font-size-base'),
-    'inline-content-width': 220px,
+    'inline-content-width': 220px
   ),
   $form
 );
@@ -1509,7 +1509,7 @@ $avatar: map.merge(
     'bg-color': getCssVar('text-color', 'disabled'),
     'text-size': 14px,
     'icon-size': 18px,
-    'border-radius': getCssVar('border-radius-base'),
+    'border-radius': getCssVar('border-radius-base')
   ),
   $avatar
 );
@@ -1519,7 +1519,7 @@ $avatar-size: map.merge(
   (
     'large': 56px,
     'default': 40px,
-    'small': 24px,
+    'small': 24px
   ),
   $avatar-size
 );
@@ -1528,7 +1528,7 @@ $avatar-group: () !default;
 $avatar-group: map.merge(
   (
     'item-gap': -8px,
-    'collapse-item-gap': 4px,
+    'collapse-item-gap': 4px
   ),
   $avatar-group
 );
@@ -1551,7 +1551,7 @@ $empty: map.merge(
     'fill-color-6': #e9ebef,
     'fill-color-7': #e5e7e9,
     'fill-color-8': #e0e3e9,
-    'fill-color-9': #d5d7de,
+    'fill-color-9': #d5d7de
   ),
   $empty
 );
@@ -1562,7 +1562,7 @@ $descriptions: () !default;
 $descriptions: map.merge(
   (
     'table-border': 1px solid getCssVar('border-color-lighter'),
-    'item-bordered-label-background': getCssVar('fill-color', 'light'),
+    'item-bordered-label-background': getCssVar('fill-color', 'light')
   ),
   $descriptions
 );
@@ -1577,7 +1577,7 @@ $result: map.merge(
     'title-font-size': 20px,
     'title-margin-top': 20px,
     'subtitle-margin-top': 10px,
-    'extra-margin-top': 30px,
+    'extra-margin-top': 30px
   ),
   $result
 );
@@ -1592,7 +1592,7 @@ $upload: map.merge(
     'list-picture-card-size': var(
         #{getCssVarName('upload', 'picture-card-size')}
       ),
-    'picture-card-size': 148px,
+    'picture-card-size': 148px
   ),
   $upload
 );
@@ -1609,7 +1609,7 @@ $transition: map.merge(
       transform getCssVar('transition-duration')
         getCssVar('transition-function-fast-bezier'),
       opacity getCssVar('transition-duration')
-        getCssVar('transition-function-fast-bezier'),
+        getCssVar('transition-function-fast-bezier')
     ),
     'fade-linear': opacity getCssVar('transition-duration-fast') linear,
     'border': border-color getCssVar('transition-duration-fast')
@@ -1617,7 +1617,7 @@ $transition: map.merge(
     'box-shadow': box-shadow getCssVar('transition-duration-fast')
       getCssVar('transition-function-ease-in-out-bezier'),
     'color': color getCssVar('transition-duration-fast')
-      getCssVar('transition-function-ease-in-out-bezier'),
+      getCssVar('transition-function-ease-in-out-bezier')
   ),
   $transition
 );
@@ -1626,7 +1626,7 @@ $transition-duration: () !default;
 $transition-duration: map.merge(
   (
     '': 0.3s,
-    'fast': 0.2s,
+    'fast': 0.2s
   ),
   $transition-duration
 );
@@ -1635,7 +1635,7 @@ $transition-function: () !default;
 $transition-function: map.merge(
   (
     'ease-in-out-bezier': cubic-bezier(0.645, 0.045, 0.355, 1),
-    'fast-bezier': cubic-bezier(0.23, 1, 0.32, 1),
+    'fast-bezier': cubic-bezier(0.23, 1, 0.32, 1)
   ),
   $transition-function
 );
@@ -1645,7 +1645,7 @@ $header: () !default;
 $header: map.merge(
   (
     'padding': 0 20px,
-    'height': 60px,
+    'height': 60px
   ),
   $header
 );
@@ -1653,7 +1653,7 @@ $header: map.merge(
 $main: () !default;
 $main: map.merge(
   (
-    'padding': 20px,
+    'padding': 20px
   ),
   $main
 );
@@ -1662,7 +1662,7 @@ $footer: () !default;
 $footer: map.merge(
   (
     'padding': 0 20px,
-    'height': 60px,
+    'height': 60px
   ),
   $footer
 );
@@ -1678,7 +1678,7 @@ $breakpoints: (
   'sm': '(min-width: #{$sm})',
   'md': '(min-width: #{$md})',
   'lg': '(min-width: #{$lg})',
-  'xl': '(min-width: #{$xl})',
+  'xl': '(min-width: #{$xl})'
 ) !default;
 
 $breakpoints-spec: (
@@ -1692,5 +1692,5 @@ $breakpoints-spec: (
   'lg-and-up': '(min-width: #{$lg})',
   'lg-only': '(min-width: #{$lg}) and (max-width: #{$xl - 1})',
   'lg-and-down': '(max-width: #{$xl - 1})',
-  'xl-only': '(min-width: #{$xl})',
+  'xl-only': '(min-width: #{$xl})'
 ) !default;

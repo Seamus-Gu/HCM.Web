@@ -235,7 +235,7 @@
     background-color: getCssVar('table-header-bg-color');
 
     > .cell.highlight {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
 
     &.required > div::before {
@@ -544,11 +544,11 @@
   }
 
   .ascending .sort-caret.ascending {
-    border-bottom-color: getCssVar('color-primary');
+    border-bottom-color: var(--color-primary-core);
   }
 
   .descending .sort-caret.descending {
-    border-top-color: getCssVar('color-primary');
+    border-top-color: var(--color-primary-core);
   }
 
   .hidden-columns {

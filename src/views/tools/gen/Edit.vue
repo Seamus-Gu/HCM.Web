@@ -2,8 +2,16 @@
   <div class="gen-column-container">
     <s-panel>
       <s-tabs type="border-card" v-model="activeName">
-        <s-tab-pane :label="t('gen.gen-table.basic')" name="list"> </s-tab-pane>
-        <s-tab-pane :label="t('gen.gen-table.columns')" name="list2">
+        <s-tab-pane :label="t('gen.gen-table.basic')" name="basic">
+          <s-form-content :schema="basicFormSchema" :model="basicFormState">
+          </s-form-content>
+          <s-row justify="end">
+            <s-button type="primary" @click="handleBasicSubmit">
+              {{ t('common.submit') }}
+            </s-button>
+          </s-row>
+        </s-tab-pane>
+        <s-tab-pane :label="t('gen.gen-table.columns')" name="columns">
           <s-tool-bar
             :addPer="['gen_column::add']"
             :columns="columns"
@@ -65,6 +73,7 @@ import {
   removeGenColumn
 } from '@/api/gen/gen-column'
 
+const route = useRoute()
 const { t, locale } = useI18n()
 const { proxy } = getCurrentInstance()
 //#endregion
@@ -74,6 +83,60 @@ const querySchema = []
 //#endregion
 
 //#region 列 && 表单
+
+const basicFormSchema = [
+  {
+    label: t('gen.gen-table.name'),
+    name: 'name',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-table.namespace'),
+    name: 'namespace',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-table.table-name'),
+    name: 'tableName',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-table.entity-name'),
+    name: 'entityName',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-table.has-pagination'),
+    name: 'hasPagination',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-table.has-combo'),
+    name: 'hasCombo',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-table.has-frontend'),
+    name: 'hasFrontend',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-table.translate'),
+    name: 'translationKey',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-table.description'),
+    name: 'description',
+    component: 'input',
+    span: 24,
+    props: {
+      type: 'textarea',
+      rows: 3
+    }
+  }
+]
+
 // 列配置
 const columns = [
   {
@@ -141,7 +204,24 @@ const formRules = {}
 //#endregion
 
 //#region 绑定值
-const activeName = ref('list')
+const activeName = ref('basic')
+const basicFormState = ref({
+  id: undefined,
+  namespace: undefined,
+  tableName: undefined,
+  entityName: undefined,
+  name: undefined,
+  description: undefined,
+  entityType: undefined,
+  hasPagination: false,
+  hasCombo: false,
+  hasFrontend: false,
+  translationKey: undefined,
+  moduleName: undefined,
+  camelName: undefined,
+  kebabName: undefined
+})
+
 // Table列表
 const filters = ref({})
 const queryLoad = ref(false)
@@ -170,6 +250,16 @@ const formState = ref({
 //#endregion
 
 //#region 方法
+function init() {
+  const tableId = route.params.tableId
+
+  getGenTableById(tableId).then(res => {
+    Object.assign(basicFormState.value, res.data)
+  })
+}
+
+function handleBasicSubmit() {}
+
 // 查询
 function handleQuery() {
   queryLoad.value = true
@@ -274,9 +364,5 @@ function handleSubmit() {
 }
 //#endregion
 
-const tableId = router.currentRoute.value.query.isSuccess
-
-getGenTableById(tableId).then(res => {
-  console.log('res', res)
-})
+init()
 </script>

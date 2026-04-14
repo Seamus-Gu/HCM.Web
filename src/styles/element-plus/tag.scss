@@ -15,7 +15,7 @@ $tag-icon-span-gap: map.merge(
   (
     'large': 8px,
     'default': 6px,
-    'small': 4px,
+    'small': 4px
   ),
   $tag-icon-span-gap
 );
@@ -131,7 +131,7 @@ $tag-icon-span-gap: map.merge(
     overflow: hidden;
     margin-left: map.get($tag-icon-span-gap, 'default');
     &:focus-visible {
-      outline: 2px solid getCssVar('color-primary');
+      outline: 2px solid var(--color-primary-core);
       outline-offset: 2px;
     }
   }

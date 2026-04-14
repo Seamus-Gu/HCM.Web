@@ -36,7 +36,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background-color: getCssVar('color-primary');
+    background-color: var(--color-primary-core);
   }
 }
 
@@ -52,7 +52,7 @@
 
   @include when(drop-inner) {
     > .#{$namespace}-tree-node__content .#{$namespace}-tree-node__label {
-      background-color: getCssVar('color-primary');
+      background-color: var(--color-primary-core);
       color: #fff;
     }
   }

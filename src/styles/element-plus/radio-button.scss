@@ -49,7 +49,7 @@
     );
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
 
     & [class*='#{$namespace}-icon-'] {

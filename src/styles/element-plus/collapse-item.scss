@@ -43,7 +43,7 @@
     }
 
     &.focusing:focus:not(:hover) {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
 
     @include when(active) {

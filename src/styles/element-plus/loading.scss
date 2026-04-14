@@ -51,7 +51,7 @@
   position: absolute;
 
   .#{$namespace}-loading-text {
-    color: getCssVar('color-primary');
+    color: var(--color-primary-core);
     margin: 3px 0;
     font-size: 14px;
   }
@@ -68,12 +68,12 @@
     stroke-dasharray: 90, 150;
     stroke-dashoffset: 0;
     stroke-width: 2;
-    stroke: getCssVar('color-primary');
+    stroke: var(--color-primary-core);
     stroke-linecap: round;
   }
 
   i {
-    color: getCssVar('color-primary');
+    color: var(--color-primary-core);
   }
 }
 

@@ -47,7 +47,6 @@ export default {
     const methods = reactive({
       init: async () => {
         appStore.setRoutePath(route.path)
-        await settingsStore.initSetting()
       }
     })
 

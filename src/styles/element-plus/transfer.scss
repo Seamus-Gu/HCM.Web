@@ -89,7 +89,7 @@
     }
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
 
     &.#{$namespace}-checkbox .#{$namespace}-checkbox__label {

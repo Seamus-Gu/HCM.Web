@@ -4,40 +4,37 @@
   </el-config-provider>
 </template>
 
-<script>
+<script setup>
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import en from 'element-plus/dist/locale/en.mjs'
+
 import { useWindowSize } from '@vueuse/core'
 
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'
 
-export default {
-  setup() {
-    const appStore = useAppStore()
-    const settingsStore = useSettingsStore()
+const appStore = useAppStore()
+const settingsStore = useSettingsStore()
 
-    const { width } = useWindowSize()
+const { width } = useWindowSize()
 
-    watchEffect(() => {
-      if (width.value > 1200) {
-        appStore.setSize('lg')
-        appStore.openSideBar()
-      } else if (width.value < 992) {
-        appStore.setSize('sm')
-        appStore.closeSideBar()
-      } else {
-        appStore.setSize('md')
-        appStore.closeSideBar()
-      }
-    })
+const language = computed(() => appStore.collapse)
+const locale = computed(() => (language.value === 'en-US' ? en : zhCn))
 
-    settingsStore.setLoginSetting()
-
-    return {
-      locale: zhCn
-    }
+watchEffect(() => {
+  if (width.value > 1200) {
+    appStore.setSize('lg')
+    appStore.openSideBar()
+  } else if (width.value < 992) {
+    appStore.setSize('sm')
+    appStore.closeSideBar()
+  } else {
+    appStore.setSize('md')
+    appStore.closeSideBar()
   }
-}
+})
+
+settingsStore.initSetting()
 </script>
 
 <style lang="scss">

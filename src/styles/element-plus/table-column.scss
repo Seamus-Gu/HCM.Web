@@ -42,7 +42,7 @@
     }
 
     @include when(active) {
-      background-color: getCssVar('color-primary');
+      background-color: var(--color-primary-core);
       color: $color-white;
     }
   }
@@ -67,7 +67,7 @@
       padding: 0 3px;
 
       &:hover {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
       }
 
       &.is-disabled {

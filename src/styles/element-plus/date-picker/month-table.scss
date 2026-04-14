@@ -21,7 +21,7 @@
 
     &.today {
       .#{$namespace}-date-table-cell__text {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
         font-weight: bold;
       }
 

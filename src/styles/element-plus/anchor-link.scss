@@ -31,7 +31,7 @@
 
     &:focus-visible {
       border-radius: getCssVar('border-radius', 'base');
-      outline: 2px solid getCssVar('color-primary');
+      outline: 2px solid var(--color-primary-core);
     }
 
     @include when(active) {

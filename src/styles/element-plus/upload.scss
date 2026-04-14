@@ -94,8 +94,8 @@
     }
 
     &:hover {
-      border-color: getCssVar('color-primary');
-      color: getCssVar('color-primary');
+      border-color: var(--color-primary-core);
+      color: var(--color-primary-core);
     }
   }
 
@@ -104,11 +104,11 @@
   }
 
   &:focus {
-    border-color: getCssVar('color-primary');
-    color: getCssVar('color-primary');
+    border-color: var(--color-primary-core);
+    color: var(--color-primary-core);
 
     .#{$namespace}-upload-dragger {
-      border-color: getCssVar('color-primary');
+      border-color: var(--color-primary-core);
     }
   }
 }
@@ -148,20 +148,20 @@
     text-align: center;
 
     em {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
       font-style: normal;
     }
   }
 
   &:hover {
-    border-color: getCssVar('color-primary');
+    border-color: var(--color-primary-core);
   }
 
   @include when(dragover) {
     padding: calc(#{getCssVar('upload-dragger-padding-vertical')} - 1px)
       calc(#{getCssVar('upload-dragger-padding-horizontal')} - 1px);
     background-color: getCssVar('color', 'primary', 'light-9');
-    border: 2px dashed getCssVar('color-primary');
+    border: 2px dashed var(--color-primary-core);
   }
 }
 
@@ -219,7 +219,7 @@
 
       &:hover {
         opacity: 1;
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
       }
     }
 
@@ -231,7 +231,7 @@
       font-size: 12px;
       cursor: pointer;
       opacity: 1;
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
       font-style: normal;
     }
 
@@ -267,7 +267,7 @@
 
       .#{bem('upload-list', 'item-name')}:hover,
       .#{bem('upload-list', 'item-name')}:focus {
-        color: getCssVar('color-primary');
+        color: var(--color-primary-core);
         cursor: pointer;
       }
 
@@ -345,7 +345,7 @@
     display: none;
 
     &:hover {
-      color: getCssVar('color-primary');
+      color: var(--color-primary-core);
     }
   }
 

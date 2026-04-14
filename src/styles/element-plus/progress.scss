@@ -107,7 +107,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: getCssVar('color-primary');
+    background-color: var(--color-primary-core);
     text-align: right;
     border-radius: 100px;
     line-height: 1;

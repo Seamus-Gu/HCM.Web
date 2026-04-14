@@ -8,9 +8,9 @@
         >
           <el-col v-if="item.component" :span="item.span || 12">
             <el-form-item
+              label-position="top"
               :label="item.label"
               :prop="item.name"
-              :label-width="labelWidth"
             >
               <component
                 v-model="model[item.name]"
@@ -45,7 +45,7 @@ export default {
     },
     labelWidth: {
       type: [String, Number],
-      default: '84px'
+      default: 'auto'
     }
   },
   components: {},

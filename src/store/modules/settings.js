@@ -4,7 +4,7 @@ import { setTheme } from '@/utils/theme'
 const settingsStore = defineStore('settings', {
   state: () => ({
     visible: false,
-    theme: 'blue',
+    theme: { name: 'blue', color: '#40a9ff', title: '拂晓蓝' },
     isDark: false,
     showTabView: true,
     affixHeader: true,
@@ -60,15 +60,6 @@ const settingsStore = defineStore('settings', {
       }
 
       setTheme(this.isDark, this.theme)
-    },
-    setLoginSetting() {
-      let settingLocal = getSettings()
-      if (settingLocal) {
-        let settings = JSON.parse(settingLocal)
-        this.theme = settings['theme']
-      }
-
-      setTheme(false, this.theme)
     }
   }
 })
