@@ -13,71 +13,64 @@ html {
   padding: 0;
 }
 
+// --el-color-primary	#409eff	#337ecc	品牌主色
+// --el-bg-color	#ffffff	#1f1f1f	页面背景
+// --el-bg-color-page	#f2f3f5	#0a0a0a	页面背景（外层）
+// --el-bg-color-overlay	#ffffff	#1d1e1f	浮层背景
+// --el-text-color-primary	#303133	#e0e0e0	主要文本
+// --el-text-color-regular	#606266	#cfd3dc	常规文本
+// --el-text-color-secondary	#909399	#a3a6ad	次要文本
+// --el-border-color	#dcdfe6	#4c4d4f	一级边框
+// --el-border-color-darker	#cdd0d6	#636466	深色边框
+
 :root {
   --sider-width: 250px;
-  --color-primary: linear-gradient(195deg, #91d5ff, #096dd9);
-  --color-primary-core: #40a9ff;
-  --color-primary-0: #e6f7ff;
-  --color-primary-1: #bae7ff;
-  --color-primary-2: #91d5ff;
-  --color-primary-3: #69c0ff;
-  --color-primary-4: #40a9ff;
-  --color-primary-5: #1677ff;
-  --color-primary-6: #0958d9;
-  --color-primary-7: #003eb3;
-  --color-primary-8: #002c8c;
-  --color-primary-9: #001d66;
-  --color-primary-hover: #1677ff;
-  --color-primary-active: #0958d9;
-  --color-primary-disabled: #d9d9d9;
-  // --el-color-primary-light-7: #c6e2ff;   // 淡色背景
-  // --el-color-primary-light-8: #d9ecff;   // 边框色
-  // --el-color-primary-light-9: #ecf5ff;   // 浅色背景
-  // --el-color-primary-dark-2: #337ecc;    // 深色（点击态）
-
-  --color-primary-box-shadow:
+  --color-primary-hover: var(--color-primary-0); //hover颜色
+  --bg-color: #f0f2f5; //背景
+  --text-color-primary: #000000e0; // 主要文本
+  --button-box-shadow:
     rgba(0, 62, 179, 0.4) 0 14px 26px -12px,
     rgba(0, 62, 179, 0.15) 0 4px 23px 0, rgba(0, 62, 179, 0.2) 0 8px 10px -5px;
-  --text-color: #000000e0;
-  --text-color-1: #515a6e;
-  --text-color-2: #ffffff;
-  --text-color-3: #fff;
-  --border-color: #dcdfe6;
-  --border-color-1: #dcdfe6;
-  --border-color-2: #e4e7ed;
-  --border-color-3: #dcdfe6;
-  --bg-color: #f0f2f5;
-  --bg-color-sider: #ffffff;
-  --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #ffffff;
-  --bg-color-4: #ffffff;
-  --box-shadow:
-    0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08);
-  --box-shadow-1: 0px 0px 12px rgba(0, 0, 0, 0.12);
-  --box-shadow-2: 0px 0px 6px rgba(0, 0, 0, 0.12);
-  --box-shadow-3:
-    0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12),
-    0px 8px 16px -8px rgba(0, 0, 0, 0.16);
-  --divider: linear-gradient(
-    to right,
-    rgba(52, 71, 103, 0),
-    rgba(52, 71, 103, 0.3),
-    rgba(52, 71, 103, 0)
-  );
 
-  --scrollbar-bg-color: rgb(220, 220, 220);
+  // --text-color-primary-1: #515a6e;
+  // --text-color-primary-2: #ffffff;
+  // --text-color-primary-3: #fff;
+  // --border-color: #dcdfe6;
+  // --border-color-1: #dcdfe6;
+  // --border-color-2: #e4e7ed;
+  // --border-color-3: #dcdfe6;
+  // --bg-color-sider: #ffffff;
+  // --bg-color-1: #ffffff;
+  // --bg-color-2: #ffffff;
+  // --bg-color-3: #ffffff;
+  // --bg-color-4: #ffffff;
+  // --box-shadow:
+  //   0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08);
+  // --box-shadow-1: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  // --box-shadow-2: 0px 0px 6px rgba(0, 0, 0, 0.12);
+  // --box-shadow-3:
+  //   0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12),
+  //   0px 8px 16px -8px rgba(0, 0, 0, 0.16);
+  // --divider: linear-gradient(
+  //   to right,
+  //   rgba(52, 71, 103, 0),
+  //   rgba(52, 71, 103, 0.3),
+  //   rgba(52, 71, 103, 0)
+  // );
+
+  // --scrollbar-bg-color: rgb(220, 220, 220);
 }
 
 html.dark {
+  --color-primary-hover: var(--color-primary-3);
   --bg-color: rgb(42, 44, 44);
-  --bg-color-sider: rgb(36, 37, 37);
-  --bg-color-1: rgb(36, 37, 37);
-  --text-color: #e5e0d8d9;
-  --text-color-1: #e5e0d8d9;
-  --border-color: #4c4d4f;
+  --text-color-primary: #e5e0d8d9;
 
-  --scrollbar-bg-color: rgb(160, 160, 160);
+  // --bg-color-sider: rgb(36, 37, 37);
+  // --bg-color-1: rgb(36, 37, 37);
+  // --text-color-primary-1: #e5e0d8d9;
+  // --border-color: #4c4d4f;
+  // --scrollbar-bg-color: rgb(160, 160, 160);
 }
 
 body {
@@ -94,7 +87,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  color: var(--text-color);
+  color: var(--text-color-primary);
 }
 
 // nprogress

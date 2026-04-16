@@ -17,7 +17,6 @@ import AppMain from './appMain'
 import Setting from './setting'
 
 import useAppStore from '@/store/modules/app'
-import useSettingsStore from '@/store/modules/settings'
 
 export default {
   name: 'Layout',
@@ -31,7 +30,6 @@ export default {
     const route = useRoute()
 
     const appStore = useAppStore()
-    const settingsStore = useSettingsStore()
 
     const size = computed(() => appStore.size)
     const isCollapse = computed(() => appStore.collapse)

@@ -111,7 +111,23 @@ function getValue(hsv, i, light) {
   return Math.round(value * 100) / 100
 }
 
-export function generate(color, opts = {}) {
+function hexToRgb(hex) {
+  const h =
+    hex.replace('#', '').length === 3
+      ? hex
+          .replace('#', '')
+          .split('')
+          .map(c => c + c)
+          .join('')
+      : hex.replace('#', '')
+  return {
+    r: parseInt(h.substr(0, 2), 16),
+    g: parseInt(h.substr(2, 2), 16),
+    b: parseInt(h.substr(4, 2), 16)
+  }
+}
+
+export function generate(color, isDark) {
   const patterns = []
   const pColor = new FastColor(color)
   const hsv = pColor.toHsv()
@@ -134,9 +150,9 @@ export function generate(color, opts = {}) {
   }
 
   // dark theme patterns
-  if (opts.theme === 'dark') {
+  if (isDark) {
     return darkColorMap.map(({ index, amount }) =>
-      new FastColor(opts.backgroundColor || '#141414')
+      new FastColor('#2a2c2c') // backgroundColor
         .mix(patterns[index], amount)
         .toHexString()
     )
@@ -144,8 +160,8 @@ export function generate(color, opts = {}) {
   return patterns.map(c => c.toHexString())
 }
 
-// export function getBoxShadow(theme) {
-//   const color = boxShadow[theme] || boxShadow[DEFAULT_THEME]
+export function getButotonBoxShadow(color) {
+  const rgb = hexToRgb(color)
 
-//   return `rgba(${color}, 0.4) 0 14px 26px -12px,rgba(${color}, 0.15) 0 4px 23px 0,rgba(${color}, 0.2) 0 8px 10px -5px`
-// }
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4) 0 14px 26px -12px,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.15) 0 4px 23px 0,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2) 0 8px 10px -5px`
+}

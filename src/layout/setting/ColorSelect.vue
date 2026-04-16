@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .color-select-container {
-  width: 228px;
+  width: 188px;
   padding: 8px 16px 16px 16px;
   .color-select-grid {
     padding: 2px;

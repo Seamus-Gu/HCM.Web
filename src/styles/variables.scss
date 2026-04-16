@@ -1,12 +1,20 @@
-$button-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+$no-radius: 0;
+$round-radius: 12px;
+
+$button-shadow:
+  rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
   rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-$button-primary-shadow: rgba(26, 115, 232, 0.3) 0px 1px 2px 0px,
+$button-primary-shadow:
+  rgba(26, 115, 232, 0.3) 0px 1px 2px 0px,
   rgba(26, 115, 232, 0.15) 0px 1px 3px 1px;
-$button-primary-hover-shadow: rgba(26, 115, 232, 0.4) 0rem 0.875rem 1.625rem -0.75rem,
+$button-primary-hover-shadow:
+  rgba(26, 115, 232, 0.4) 0rem 0.875rem 1.625rem -0.75rem,
   rgba(26, 115, 232, 0.15) 0rem 0.25rem 1.4375rem 0rem,
   rgba(26, 115, 232, 0.2) 0rem 0.5rem 0.625rem -0.3125rem;
-$button-color-active-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
-  rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+$button-color-active-shadow:
+  rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+  rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
+  rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
 
 $shadow_1: 0 15px 10px -15px rgba(0, 0, 0, 0.43);
 $shadow_2: 0 0 10px 1px rgba(0, 0, 0, 0.43);

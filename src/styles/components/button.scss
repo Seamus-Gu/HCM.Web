@@ -157,12 +157,13 @@
 
   &--primary {
     --button-bg: var(--color-primary);
-    --button-hover-box-shadow: var(--color-primary-box-shadow);
+    --button-hover-box-shadow: var(--button-box-shadow);
   }
 
   &--success {
     --button-bg: linear-gradient(195deg, rgb(160, 250, 120), rgb(60, 150, 70));
-    --button-hover-box-shadow: rgba(76, 175, 80, 0.4) 0 14px 26px -12px,
+    --button-hover-box-shadow:
+      rgba(76, 175, 80, 0.4) 0 14px 26px -12px,
       rgba(76, 175, 80, 0.15) 0 4px 23px 0,
       rgba(76, 175, 80, 0.2) 0 8px 10px -5px;
   }
@@ -173,21 +174,24 @@
       rgb(230, 230, 240),
       rgb(140, 150, 170)
     );
-    --button-hover-box-shadow: rgba(130, 140, 140, 0.4) 0 14px 26px -12px,
+    --button-hover-box-shadow:
+      rgba(130, 140, 140, 0.4) 0 14px 26px -12px,
       rgba(130, 140, 140, 0.15) 0 4px 23px 0,
       rgba(130, 140, 140, 0.2) 0 8px 10px -5px;
   }
 
   &--warning {
     --button-bg: linear-gradient(195deg, rgb(245, 220, 200), rgb(250, 140, 0));
-    --button-hover-box-shadow: rgba(251, 140, 0, 0.4) 0 14px 26px -12px,
+    --button-hover-box-shadow:
+      rgba(251, 140, 0, 0.4) 0 14px 26px -12px,
       rgba(251, 140, 0, 0.15) 0 4px 23px 0,
       rgba(251, 140, 0, 0.2) 0 8px 10px -5px;
   }
 
   &--danger {
     --button-bg: linear-gradient(195deg, rgb(248, 160, 160), rgb(250, 0, 0));
-    --button-hover-box-shadow: rgba(244, 67, 53, 0.4) 0 14px 26px -12px,
+    --button-hover-box-shadow:
+      rgba(244, 67, 53, 0.4) 0 14px 26px -12px,
       rgba(244, 67, 53, 0.15) 0 4px 23px 0,
       rgba(244, 67, 53, 0.2) 0 8px 10px -5px;
   }
