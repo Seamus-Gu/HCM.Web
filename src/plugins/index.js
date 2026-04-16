@@ -11,6 +11,7 @@ import modal from './proxy/modal'
 // import notify from './proxy/notify'
 
 export function loadAllProxy(app) {
+  // 通用消息提示使用element-plus引用$message
   app.config.globalProperties.$modal = modal
   app.config.globalProperties.$msg = msg
   // app.config.globalProperties.$notify = notify

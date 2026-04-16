@@ -87,6 +87,7 @@
                 circle
                 style="float: right; position: absolute; right: 6%; z-index: 10"
                 v-copy-text="item.code"
+                v-copyText:callback="copyTextSuccess"
               >
                 <svg class="icon" ariel-hidden="true">
                   <use xlink:href="#icon-copy" />
@@ -247,6 +248,10 @@ function handleChangeTab(index) {
   codeData.value = codeList.value[index].code
 }
 
+function copyTextSuccess() {
+  proxy.$message.success(t('common.copy-success'))
+}
+
 function handleExportCode() {
   exportCode({
     tableId: tableId.value
@@ -261,20 +266,7 @@ function handleDialogClose() {
   codeData.value = ''
 }
 
-function handleColumn(row) {
-  router.push({
-    path: '/tool/gen/column',
-    query: { tableId: row.id }
-  })
-}
-
 function handleEdit(id) {
-  // const tableId = row.tableId || ids.value[0]
-  // router.push({
-  //   path: '/tool/gen-edit/index/' + tableId,
-  //   query: { pageNum: queryParams.value.pageNum }
-  // })
-
   router.push({
     path: '/tools/gen/edit/' + id,
     query: {}

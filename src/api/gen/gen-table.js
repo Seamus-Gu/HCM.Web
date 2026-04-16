@@ -9,11 +9,20 @@ export function getGenTableList(query) {
   })
 }
 
-// 根据id获取代码生成列详细信息
+// 根据id获取代码生成表详细信息
 export function getGenTableById(id) {
   return request({
-    url: 'gen/v2/gen-table' + '/' + id,
+    url: baseUrl + '/' + id,
     method: 'get'
+  })
+}
+
+// 修改代码生成表
+export function editGenTable(data) {
+  return request({
+    url: baseUrl + '/edit',
+    method: 'put',
+    data: data
   })
 }
 

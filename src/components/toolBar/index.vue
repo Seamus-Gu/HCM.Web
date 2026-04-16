@@ -28,7 +28,7 @@
                 <use xlink:href="#icon-trash-alt" />
               </svg>
             </template>
-            {{ t('common.batch-delete') }}
+            {{ t('common.batch-remove') }}
           </s-button>
           <s-button
             v-if="hasExport"

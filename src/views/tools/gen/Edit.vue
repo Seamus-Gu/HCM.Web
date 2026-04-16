@@ -3,7 +3,11 @@
     <s-panel>
       <s-tabs type="border-card" v-model="activeName">
         <s-tab-pane :label="t('gen.gen-table.basic')" name="basic">
-          <s-form-content :schema="basicFormSchema" :model="basicFormState">
+          <s-form-content
+            ref="basicFormRef"
+            :schema="basicFormSchema"
+            :model="basicFormState"
+          >
           </s-form-content>
           <s-row justify="end">
             <s-button type="primary" @click="handleBasicSubmit">
@@ -28,7 +32,7 @@
                 size="small"
                 @click="handleEdit(row.id)"
               >
-                修改
+                {{ t('common.edit') }}
               </s-button>
               <s-divider direction="vertical" />
               <s-button
@@ -38,7 +42,7 @@
                 size="small"
                 @click="handleRemove(row.id)"
               >
-                删除
+                {{ t('common.remove') }}
               </s-button>
             </template>
           </s-table>
@@ -63,7 +67,7 @@
 <script setup>
 //#region 引用
 import { useI18n } from 'vue-i18n'
-import { getGenTableById } from '@/api/gen/gen-table'
+import { getGenTableById, editGenTable } from '@/api/gen/gen-table'
 
 import {
   getGenColumnList,
@@ -205,6 +209,12 @@ const formRules = {}
 
 //#region 绑定值
 const activeName = ref('basic')
+
+const basicFormVisible = ref(false)
+const basicFormTitle = ref(t('common.add') + t('gen.gen-table.name'))
+const basicConfirmLoading = ref(false)
+const basicFormRef = ref()
+
 const basicFormState = ref({
   id: undefined,
   namespace: undefined,
@@ -258,7 +268,18 @@ function init() {
   })
 }
 
-function handleBasicSubmit() {}
+function handleBasicSubmit() {
+  basicFormRef.value.validate().then(() => {
+    basicConfirmLoading.value = true
+    editGenTable(basicFormState.value)
+      .then(res => {
+        proxy.$message.success(t('common.edit-success'))
+      })
+      .finally(() => {
+        basicConfirmLoading.value = false
+      })
+  })
+}
 
 // 查询
 function handleQuery() {
