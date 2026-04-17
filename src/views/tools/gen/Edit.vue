@@ -7,6 +7,7 @@
             ref="basicFormRef"
             :schema="basicFormSchema"
             :model="basicFormState"
+            :rules="basicFormRules"
           >
           </s-form-content>
           <s-row justify="end">
@@ -125,7 +126,7 @@ const basicFormSchema = [
     component: 'switch'
   },
   {
-    label: t('gen.gen-table.translate'),
+    label: t('gen.gen-table.translation'),
     name: 'translationKey',
     component: 'input'
   },
@@ -184,17 +185,32 @@ const formSchema = [
   {
     label: t('gen.gen-column.is-nullable'),
     name: 'isNullable',
-    component: 'input'
+    component: 'switch'
   },
   {
-    label: t(''),
+    label: t('gen.gen-column.type-length'),
     name: 'typeLength',
     component: 'input'
   },
   {
-    label: t(''),
+    label: t('gen.gen-column.point'),
     name: 'point',
     component: 'input'
+  },
+  {
+    label: t('gen.gen-column.translation'),
+    name: 'translationKey',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.is-hidden'),
+    name: 'isHidden',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-column.is-sort'),
+    name: 'isSort',
+    component: 'switch'
   },
   {
     label: t('gen.gen-column.component-type'),
@@ -210,8 +226,6 @@ const formRules = {}
 //#region 绑定值
 const activeName = ref('basic')
 
-const basicFormVisible = ref(false)
-const basicFormTitle = ref(t('common.add') + t('gen.gen-table.name'))
 const basicConfirmLoading = ref(false)
 const basicFormRef = ref()
 
@@ -231,6 +245,30 @@ const basicFormState = ref({
   camelName: undefined,
   kebabName: undefined
 })
+
+const basicFormRules = {
+  name: [
+    { required: true, message: t('gen.gen-table.name') + t('common.required') }
+  ],
+  namespace: [
+    {
+      required: true,
+      message: t('gen.gen-table.namespace') + t('common.required')
+    }
+  ],
+  tableName: [
+    {
+      required: true,
+      message: t('gen.gen-table.table-name') + t('common.required')
+    }
+  ],
+  entityName: [
+    {
+      required: true,
+      message: t('gen.gen-table.entity-name') + t('common.required')
+    }
+  ]
+}
 
 // Table列表
 const filters = ref({})
@@ -271,13 +309,9 @@ function init() {
 function handleBasicSubmit() {
   basicFormRef.value.validate().then(() => {
     basicConfirmLoading.value = true
-    editGenTable(basicFormState.value)
-      .then(res => {
-        proxy.$message.success(t('common.edit-success'))
-      })
-      .finally(() => {
-        basicConfirmLoading.value = false
-      })
+    editGenTable(basicFormState.value).finally(() => {
+      basicConfirmLoading.value = false
+    })
   })
 }
 

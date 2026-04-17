@@ -1,0 +1,20 @@
+export default {
+  tips: '提示',
+  name: '代码生成',
+  namespace: '命名空间',
+  'table-name': '表名',
+  'entity-name': '实体名',
+  description: '描述',
+  'has-pagination': '是否分页',
+  'has-combo': '是否生成下拉',
+  'has-frontend': '是否生成前端',
+  translation: '翻译键值',
+  'generate-by-sql': '根据sql语句生成表格数据',
+  sql: 'SQL语句',
+  'generate-code': '生成代码',
+  'configure-columns': '配置列',
+  'code-preview': '代码预览',
+  'export-copy': '导出代码',
+  basic: '基础信息',
+  columns: '列信息'
+}

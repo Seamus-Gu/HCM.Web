@@ -33,6 +33,13 @@ function loadMessages() {
   return messages
 }
 
+// // 动态加载语言
+// export async function loadLocale(lang) {
+//   const messages = await import(`./locales/${lang}/index.js`)
+//   i18n.global.setLocaleMessage(lang, messages.default)
+//   i18n.global.locale.value = lang
+// }
+
 const i18n = createI18n({
   legacy: false,
   locale: 'zh-CN',

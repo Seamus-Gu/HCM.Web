@@ -9,7 +9,7 @@
       "has-pagination": "是否分页",
       "has-combo": "是否生成下拉",
       "has-frontend": "是否生成前端",
-      "translate": "翻译键值",
+      "translation": "翻译键值",
       "generate-by-sql": "根据sql语句生成表格数据",
       "sql": "SQL语句",
       "generate-code": "生成代码",
@@ -24,7 +24,12 @@
       "column-type": "列类型",
       "column-desc": "列注释",
       "is-nullable": "是否可空",
-      "component-type": "组件类型"
+      "component-type": "组件类型",
+      "is-hidden": "是否隐藏",
+      "is-sort": "是否排序",
+      "translation": "翻译键值",
+      "type-length": "类型长度",
+      "point": "小数点位数"
     }
   }
 }
