@@ -1,110 +1,68 @@
 import { createI18n } from 'vue-i18n'
-import { storeToRefs } from 'pinia'
 
-const modules = import.meta.glob('./modules/**/*.json', { eager: true })
+export const DEFAULT_LOCALE = 'zh-CN'
+export const FALLBACK_LOCALE = 'zh-CN'
+export const LOCALE_STORAGE_KEY = 'app-locale'
+export const SUPPORTED_LOCALES = [
+  { label: '简体中文', value: 'zh-CN' },
+  { label: 'English', value: 'en-US' }
+]
 
-function deepMerge(target = {}, source = {}) {
-  for (const key in source) {
-    if (
-      source[key] &&
-      typeof source[key] === 'object' &&
-      !Array.isArray(source[key])
-    ) {
-      target[key] = deepMerge(target[key] || {}, source[key])
-    } else {
-      target[key] = source[key]
-    }
-  }
-  return target
+// 每个语言文件夹的 index.js 负责扫描该文件夹内各模块 JSON 并添加模块前缀
+const localeIndexLoaders = import.meta.glob('./*/index.js')
+
+function normalizeLocale(locale) {
+  const supportedLocales = SUPPORTED_LOCALES.map(item => item.value)
+
+  return supportedLocales.includes(locale) ? locale : DEFAULT_LOCALE
 }
 
-function loadMessages() {
-  const messages = Object.create(null)
-
-  for (const [path, mod] of Object.entries(modules)) {
-    const match = path.match(/modules\/(.+)\/(.+)\.json$/)
-    if (!match) continue
-    const [, , locale] = match
-    if (!messages[locale]) messages[locale] = {}
-
-    messages[locale] = deepMerge(messages[locale], mod.default)
-  }
-
-  return messages
+async function loadLocaleMessages(locale) {
+  const targetLocale = normalizeLocale(locale)
+  const loader = localeIndexLoaders[`./${targetLocale}/index.js`]
+  if (!loader) return {}
+  const mod = await loader()
+  return mod.default || mod
 }
 
-// // 动态加载语言
-// export async function loadLocale(lang) {
-//   const messages = await import(`./locales/${lang}/index.js`)
-//   i18n.global.setLocaleMessage(lang, messages.default)
-//   i18n.global.locale.value = lang
-// }
+function setDocumentLanguage(locale) {
+  document.documentElement.setAttribute('lang', locale)
+}
+
+const loadedLocales = new Set()
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'zh-CN',
-  fallbackLocale: 'zh-CN',
-  messages: loadMessages(),
-  globalInjection: true
+  locale: DEFAULT_LOCALE,
+  fallbackLocale: FALLBACK_LOCALE,
+  messages: {},
+  globalInjection: true,
+  missingWarn: false,
+  fallbackWarn: false
 })
 
-// const stores = useThemeConfig(pinia)
-// const { themeConfig } = storeToRefs(stores)
+export async function setLocale(locale) {
+  const targetLocale = normalizeLocale(locale)
 
-// const i18n = createI18n({
-//   legacy: false,           // 使用 Composition API 模式
-//   locale: localStorage.getItem('locale') || 'zh-CN',
-//   fallbackLocale: {
-//     'zh-HK': ['zh-CN', 'en-US'],
-//     'zh-TW': ['zh-CN', 'en-US'],
-//     default: ['en-US']
-//   },
-//   messages: loadMessages(),
-//   missingWarn: false,      // 生产环境关闭警告
-//   fallbackWarn: false,
-//   // 数字、日期本地化配置
-//   numberFormats: {
-//     'zh-CN': {
-//       currency: {
-//         style: 'currency',
-//         currency: 'CNY',
-//         notation: 'standard'
-//       }
-//     },
-//     'en-US': {
-//       currency: {
-//         style: 'currency',
-//         currency: 'USD',
-//         notation: 'standard'
-//       }
-//     }
-//   },
-//   datetimeFormats: {
-//     'zh-CN': {
-//       short: {
-//         year: 'numeric',
-//         month: '2-digit',
-//         day: '2-digit'
-//       },
-//       long: {
-//         year: 'numeric',
-//         month: '2-digit',
-//         day: '2-digit',
-//         hour: '2-digit',
-//         minute: '2-digit'
-//       }
-//     }
-//   }
-// })
+  if (!loadedLocales.has(targetLocale)) {
+    const messages = await loadLocaleMessages(targetLocale)
+    i18n.global.setLocaleMessage(targetLocale, messages)
+    loadedLocales.add(targetLocale)
+  }
 
-// export async function setLocale(locale: string) {
-//   // 如需按需加载，可在此动态 import
-//   // const messages = await import(`./locales/${locale}.ts`)
-//   // i18n.global.setLocaleMessage(locale, messages.default)
+  i18n.global.locale.value = targetLocale
+  localStorage.setItem(LOCALE_STORAGE_KEY, targetLocale)
+  setDocumentLanguage(targetLocale)
 
-//   i18n.global.locale.value = locale
-//   localStorage.setItem('locale', locale)
-//   document.querySelector('html')?.setAttribute('lang', locale)
-// }
+  return targetLocale
+}
+
+export async function setupI18n() {
+  const locale = normalizeLocale(localStorage.getItem(LOCALE_STORAGE_KEY))
+
+  await setLocale(locale)
+
+  return locale
+}
 
 export default i18n

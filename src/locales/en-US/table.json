@@ -1,0 +1,9 @@
+{
+  "selection": "Selection",
+  "index": "No.",
+  "total": "Total {total} items",
+  "empty-text": "No Data",
+  "page-size": "Per page",
+  "page-go": "Go to",
+  "page-unit": "items"
+}

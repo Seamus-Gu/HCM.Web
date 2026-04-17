@@ -1,0 +1,20 @@
+{
+  "user-center": "User Center",
+  "username": "Username",
+  "password": "Password",
+  "old-password": "Old Password",
+  "new-password": "New Password",
+  "confirm-password": "Confirm Password",
+  "nickname": "Nickname",
+  "real-name": "Real Name",
+  "phone": "Phone",
+  "email": "Email",
+  "avatar": "Avatar",
+  "role": "Role",
+  "department": "Department",
+  "login-success": "Login successful",
+  "login-failed": "Login failed, please check your credentials",
+  "account-disabled": "Account has been disabled",
+  "forget-password": "Forgot Password",
+  "remember-me": "Remember me"
+}

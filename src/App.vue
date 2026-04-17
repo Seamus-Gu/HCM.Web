@@ -7,6 +7,7 @@
 <script setup>
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import en from 'element-plus/dist/locale/en.mjs'
+import { useI18n } from 'vue-i18n'
 
 import { useWindowSize } from '@vueuse/core'
 
@@ -15,11 +16,16 @@ import useSettingsStore from '@/store/modules/settings'
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
+const { locale: currentLocale } = useI18n()
 
 const { width } = useWindowSize()
 
-const language = computed(() => appStore.collapse)
-const locale = computed(() => (language.value === 'en-US' ? en : zhCn))
+const elementLocales = {
+  'zh-CN': zhCn,
+  'en-US': en
+}
+
+const locale = computed(() => elementLocales[currentLocale.value] || zhCn)
 
 watchEffect(() => {
   if (width.value > 1200) {

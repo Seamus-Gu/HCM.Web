@@ -1,0 +1,9 @@
+{
+  "selection": "勾选",
+  "index": "序号",
+  "total": "共 {total} 条",
+  "empty-text": "暂无数据",
+  "page-size": "每页显示",
+  "page-go": "跳至",
+  "page-unit": "条"
+}

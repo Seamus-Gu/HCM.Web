@@ -1,0 +1,11 @@
+{
+  "system": "系统管理",
+  "user-manage": "用户管理",
+  "role-manage": "角色管理",
+  "menu-manage": "菜单管理",
+  "dept-manage": "部门管理",
+  "dict-manage": "字典管理",
+  "log-manage": "日志管理",
+  "config-manage": "参数配置",
+  "notice": "通知公告"
+}

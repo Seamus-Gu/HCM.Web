@@ -1,6 +1,8 @@
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY } from '@/locales'
+
 const appStore = defineStore('app', {
   state: () => ({
-    language: 'zh-cn',
+    language: localStorage.getItem(LOCALE_STORAGE_KEY) || DEFAULT_LOCALE,
     size: 'lg', // sm,md,lg
     collapse: false,
     routePath: '/index'
@@ -17,6 +19,9 @@ const appStore = defineStore('app', {
     },
     setSize(size) {
       this.size = size
+    },
+    setLanguage(language) {
+      this.language = language
     },
     setRoutePath(routePath) {
       this.routePath = routePath

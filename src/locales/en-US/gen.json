@@ -1,0 +1,33 @@
+{
+  "gen-table": {
+    "name": "Code Generator",
+    "namespace": "Namespace",
+    "table-name": "Table Name",
+    "entity-name": "Entity Name",
+    "description": "Description",
+    "has-pagination": "Enable Pagination",
+    "has-combo": "Generate Dropdown",
+    "has-frontend": "Generate Frontend",
+    "translation": "Translation Key",
+    "generate-by-sql": "Generate from SQL Statement",
+    "sql": "SQL Statement",
+    "generate-code": "Generate Code",
+    "configure-columns": "Configure Columns",
+    "code-preview": "Code Preview",
+    "export-copy": "Export Code",
+    "basic": "Basic Info",
+    "columns": "Column Info"
+  },
+  "gen-column": {
+    "name": "Column Name",
+    "column-type": "Column Type",
+    "column-desc": "Column Comment",
+    "is-nullable": "Nullable",
+    "component-type": "Component Type",
+    "is-hidden": "Hidden",
+    "is-sort": "Sortable",
+    "translation": "Translation Key",
+    "type-length": "Type Length",
+    "point": "Decimal Places"
+  }
+}

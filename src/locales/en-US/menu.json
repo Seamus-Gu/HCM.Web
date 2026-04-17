@@ -1,0 +1,11 @@
+{
+  "system": "System",
+  "user-manage": "User Management",
+  "role-manage": "Role Management",
+  "menu-manage": "Menu Management",
+  "dept-manage": "Department Management",
+  "dict-manage": "Dictionary Management",
+  "log-manage": "Log Management",
+  "config-manage": "Config Management",
+  "notice": "Notice"
+}

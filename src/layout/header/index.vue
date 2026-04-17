@@ -24,11 +24,30 @@
                 <use xlink:href="#icon-remind" />
               </svg>
             </div>
-            <div v-if="localizationSwitch" class="header-item cursor-pointer">
-              <svg class="icon" ariel-hidden="true" font-size="20px">
-                <use xlink:href="#icon-i18n" />
-              </svg>
-            </div>
+            <el-dropdown
+              v-if="localizationSwitch"
+              class="header-item cursor-pointer"
+              trigger="click"
+              @command="changeLanguage"
+            >
+              <div class="header-item cursor-pointer">
+                <svg class="icon" ariel-hidden="true" font-size="20px">
+                  <use xlink:href="#icon-i18n" />
+                </svg>
+              </div>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item
+                    v-for="item in languageOptions"
+                    :key="item.value"
+                    :command="item.value"
+                    :disabled="item.value === language"
+                  >
+                    {{ item.label }}
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
             <div
               v-if="themeSwitch"
               class="header-item cursor-pointer"
@@ -58,6 +77,7 @@ import Avatar from './Avatar.vue'
 
 import ScreenFull from '@/components/screenFull'
 
+import { SUPPORTED_LOCALES, setLocale } from '@/locales'
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'
 
@@ -77,7 +97,9 @@ export default {
 
     const headerData = reactive({
       isActive: computed(() => !appStore.collapse),
-      size: computed(() => appStore.size)
+      size: computed(() => appStore.size),
+      language: computed(() => appStore.language),
+      languageOptions: SUPPORTED_LOCALES
     })
 
     const affixHeader = computed(() => settingsStore.affixHeader)
@@ -89,6 +111,10 @@ export default {
     const methods = reactive({
       toggleSideBar: () => {
         appStore.toggleSideBar()
+      },
+      changeLanguage: async locale => {
+        const nextLocale = await setLocale(locale)
+        appStore.setLanguage(nextLocale)
       },
       showSetting: () => {
         settingsStore.setVisible(true)

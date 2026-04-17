@@ -1,0 +1,10 @@
+{
+  "required": "This field is required",
+  "input-required": "Please input {name}",
+  "select-required": "Please select {name}",
+  "phone": "Please enter a valid phone number",
+  "email": "Please enter a valid email address",
+  "password-length": "Password length must be between {min} and {max} characters",
+  "password-not-match": "The two passwords do not match",
+  "id-card": "Please enter a valid ID card number"
+}
