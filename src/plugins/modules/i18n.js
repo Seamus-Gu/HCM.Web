@@ -1,6 +1,4 @@
-import i18n, { setupI18n } from '../../locales'
-
-setupI18n()
+import i18n from '../../locales'
 
 export default function setupElementPlus(app) {
   app.use(i18n)

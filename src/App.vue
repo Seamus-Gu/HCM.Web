@@ -40,6 +40,7 @@ watchEffect(() => {
   }
 })
 
+appStore.initLanguage()
 settingsStore.initSetting()
 </script>
 

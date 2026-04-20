@@ -126,7 +126,7 @@
 import { useI18n } from 'vue-i18n'
 import { getGenTableList, generateCode, exportCode } from '@/api/gen/gen-table'
 import { generateData } from '@/api/gen/sql'
-import { namespaceOptions } from '@/data/gen/options'
+import { namespaceOptions } from '@/data/options/gen'
 import Codemirror from 'codemirror-editor-vue3'
 import 'codemirror/mode/clike/clike.js'
 import 'codemirror/theme/dracula.css'

@@ -70,86 +70,61 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Avatar from './Avatar.vue'
 
 import ScreenFull from '@/components/screenFull'
 
-import { SUPPORTED_LOCALES, setLocale } from '@/locales'
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'
 
-export default {
-  components: {
-    ScreenFull,
-    Avatar,
-    Hamburger,
-    Breadcrumb
-  },
-  setup() {
-    const appStore = useAppStore()
-    const settingsStore = useSettingsStore()
+import { languageOptions } from '@/data/options/common'
 
-    const headerRef = ref(null)
-    const isHeaderFixed = ref(true)
+const appStore = useAppStore()
+const settingsStore = useSettingsStore()
 
-    const headerData = reactive({
-      isActive: computed(() => !appStore.collapse),
-      size: computed(() => appStore.size),
-      language: computed(() => appStore.language),
-      languageOptions: SUPPORTED_LOCALES
-    })
+const headerRef = ref(null)
+const isHeaderFixed = ref(true)
 
-    const affixHeader = computed(() => settingsStore.affixHeader)
-    const localizationSwitch = computed(() => settingsStore.localizationSwitch)
-    const themeSwitch = computed(() => settingsStore.themeSwitch)
-    const noticeSwitch = computed(() => settingsStore.noticeSwitch)
-    const fullSwitch = computed(() => settingsStore.fullSwitch)
+const isActive = computed(() => !appStore.collapse)
+const size = computed(() => appStore.size)
+const language = computed(() => appStore.language)
 
-    const methods = reactive({
-      toggleSideBar: () => {
-        appStore.toggleSideBar()
-      },
-      changeLanguage: async locale => {
-        const nextLocale = await setLocale(locale)
-        appStore.setLanguage(nextLocale)
-      },
-      showSetting: () => {
-        settingsStore.setVisible(true)
-      }
-    })
+const affixHeader = computed(() => settingsStore.affixHeader)
+const localizationSwitch = computed(() => settingsStore.localizationSwitch)
+const themeSwitch = computed(() => settingsStore.themeSwitch)
+const noticeSwitch = computed(() => settingsStore.noticeSwitch)
+const fullSwitch = computed(() => settingsStore.fullSwitch)
 
-    const handleScroll = () => {
-      const div = headerRef.value
-      if (div) {
-        if (div.offsetTop == 16) {
-          isHeaderFixed.value = true
-        } else {
-          isHeaderFixed.value = false
-        }
-      }
-    }
+function toggleSideBar() {
+  appStore.toggleSideBar()
+}
 
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll, true)
-    })
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll, true)
-    })
+async function changeLanguage(locale) {
+  appStore.setLanguage(locale)
+}
 
-    return {
-      headerRef,
-      isHeaderFixed,
-      affixHeader,
-      localizationSwitch,
-      themeSwitch,
-      noticeSwitch,
-      fullSwitch,
-      ...toRefs(headerData),
-      ...toRefs(methods)
+function showSetting() {
+  settingsStore.setVisible(true)
+}
+
+function handleScroll() {
+  const div = headerRef.value
+  if (div) {
+    if (div.offsetTop == 16) {
+      isHeaderFixed.value = true
+    } else {
+      isHeaderFixed.value = false
     }
   }
 }
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, true)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll, true)
+})
 </script>

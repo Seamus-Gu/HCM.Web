@@ -2,13 +2,12 @@ import { createI18n } from 'vue-i18n'
 
 export const DEFAULT_LOCALE = 'zh-CN'
 export const FALLBACK_LOCALE = 'zh-CN'
-export const LOCALE_STORAGE_KEY = 'app-locale'
+export const LOCALE_STORAGE_KEY = 'locale'
 export const SUPPORTED_LOCALES = [
   { label: '简体中文', value: 'zh-CN' },
   { label: 'English', value: 'en-US' }
 ]
 
-// 每个语言文件夹的 index.js 负责扫描该文件夹内各模块 JSON 并添加模块前缀
 const localeIndexLoaders = import.meta.glob('./*/index.js')
 
 function normalizeLocale(locale) {
@@ -55,14 +54,6 @@ export async function setLocale(locale) {
   setDocumentLanguage(targetLocale)
 
   return targetLocale
-}
-
-export async function setupI18n() {
-  const locale = normalizeLocale(localStorage.getItem(LOCALE_STORAGE_KEY))
-
-  await setLocale(locale)
-
-  return locale
 }
 
 export default i18n

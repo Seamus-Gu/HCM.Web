@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY } from '@/locales'
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, setLocale } from '@/locales'
 
 const appStore = defineStore('app', {
   state: () => ({
@@ -22,9 +22,13 @@ const appStore = defineStore('app', {
     },
     setLanguage(language) {
       this.language = language
+      setLocale(this.language)
     },
     setRoutePath(routePath) {
       this.routePath = routePath
+    },
+    initLanguage() {
+      setLocale(this.language)
     }
   }
 })
