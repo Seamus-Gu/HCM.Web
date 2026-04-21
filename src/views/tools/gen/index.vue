@@ -305,8 +305,8 @@ function handleSubmit() {
         tableRef.value.reset()
       })
       .finally(() => {
-        handleClose()
         confirmLoading.value = false
+        handleClose()
       })
 
     handleResetForm()

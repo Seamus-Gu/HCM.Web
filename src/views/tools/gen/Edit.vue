@@ -24,7 +24,14 @@
             @refresh="handleRefresh"
           >
           </s-tool-bar>
-          <s-table ref="tableRef" :api="getGenColumnList" :columns="columns">
+          <s-table
+            ref="tableRef"
+            :api="getGenColumnList"
+            :columns="columns"
+            :default="{
+              tableId: $route.params.tableId
+            }"
+          >
             <template #action="{ row }">
               <s-button
                 v-has="['gen_column::edit']"
@@ -68,8 +75,9 @@
 <script setup>
 //#region 引用
 import { useI18n } from 'vue-i18n'
-import { getGenTableById, editGenTable } from '@/api/gen/gen-table'
+import { namespaceOptions, componentOptions } from '@/data/options/gen'
 
+import { getGenTableById, editGenTable } from '@/api/gen/gen-table'
 import {
   getGenColumnList,
   getGenColumnById,
@@ -81,10 +89,6 @@ import {
 const route = useRoute()
 const { t, locale } = useI18n()
 const { proxy } = getCurrentInstance()
-//#endregion
-
-//#region 查询列
-const querySchema = []
 //#endregion
 
 //#region 列 && 表单
@@ -188,16 +192,6 @@ const formSchema = [
     component: 'switch'
   },
   {
-    label: t('gen.gen-column.type-length'),
-    name: 'typeLength',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.point'),
-    name: 'point',
-    component: 'input'
-  },
-  {
     label: t('gen.gen-column.translation'),
     name: 'translationKey',
     component: 'input'
@@ -215,6 +209,19 @@ const formSchema = [
   {
     label: t('gen.gen-column.component-type'),
     name: 'componentType',
+    component: 'select',
+    props: {
+      options: componentOptions
+    }
+  },
+  {
+    label: t('gen.gen-column.type-length'),
+    name: 'typeLength',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.point'),
+    name: 'point',
     component: 'input'
   }
 ]

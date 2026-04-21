@@ -8,3 +8,14 @@ export const namespaceOptions = [
     value: 'PIHCM.Core'
   }
 ]
+
+export const componentOptions = [
+  {
+    label: 'input',
+    value: 0
+  },
+  {
+    label: 'select',
+    value: 1
+  }
+]

@@ -11,7 +11,7 @@
       @sortChange="sortChange"
     >
       <template
-        v-for="item in columns.filter(t => t.visible != false)"
+        v-for="item in columns.filter(item => item.visible !== false)"
         :key="item.index"
       >
         <el-table-column
@@ -38,6 +38,7 @@
     </el-table>
 
     <el-pagination
+      v-if="hasPagination"
       class="table-pagination"
       v-model:current-page="pageNum"
       v-model:page-size="size"
@@ -57,7 +58,6 @@ import useSettingsStore from '@/store/modules/settings'
 export default {
   name: 'STable',
   props: {
-    // Table
     border: {
       type: Boolean,
       default: true
@@ -66,10 +66,9 @@ export default {
       type: String,
       default: 'id'
     },
-    // Pagination
     paginationLayout: {
       type: String,
-      default: 'total,prev, pager, 22next'
+      default: 'total, prev, pager, next'
     },
     pageSize: {
       type: Number,
@@ -77,124 +76,115 @@ export default {
     },
     pageSizeArr: {
       type: Array,
-      default: [10, 20, 50, 100]
+      default: () => [10, 20, 50, 100]
+    },
+    hasPagination: {
+      type: Boolean,
+      default: true
     },
     pagerCenter: {
       type: Boolean,
       default: false
     },
-    // Api
     api: {
-      type: Function,
+      type: [Function, Object],
       required: true
     },
-    defaultValue: {
-      type: Object
+    default: {
+      type: Object,
+      default: () => ({})
     },
     columns: {
-      type: Object,
-      required: true
+      type: Array,
+      default: () => []
     }
   },
   setup(props) {
     const settingsStore = useSettingsStore()
 
-    const dataSource = ref()
+    const dataSource = ref([])
+    const loading = ref(false)
+    const tableRef = ref()
+    const tableSize = computed(() => settingsStore.tableSize)
 
-    const tableData = reactive({
-      loading: false,
-      tableRef: undefined,
-      tableSize: computed(() => settingsStore.tableSize)
-    })
+    const pageNum = ref(1)
+    const size = ref(props.pageSize)
+    const total = ref(0)
 
-    const paginationData = reactive({
-      pageNum: 1,
-      size: props.pageSize,
-      total: 0
-    })
-
-    const queryParams = {
+    const queryParams = reactive({
       sorter: {},
       query: {},
       filters: {}
-    }
+    })
 
     const methods = reactive({
       getData: async () => {
-        tableData.loading = true
+        loading.value = true
 
         const queryData = {
-          pageNum: paginationData.pageNum,
-          pageSize: paginationData.size
+          pageNum: pageNum.value,
+          pageSize: size.value,
+          ...queryParams.sorter,
+          ...queryParams.query,
+          ...queryParams.filters,
+          ...props.default
         }
 
-        Object.assign(
-          queryData,
-          queryParams.sorter,
-          queryParams.query,
-          queryParams.filters
-        )
-
-        if (props.defaultValue) {
-          Object.assign(queryData, props.defaultValue)
+        try {
+          const res = await props.api(queryData)
+          total.value = res?.data?.total || 0
+          dataSource.value = res?.data?.items || []
+        } catch (_) {
+          dataSource.value = []
+          total.value = 0
+          return false
+        } finally {
+          loading.value = false
         }
-
-        await props
-          .api(queryData)
-          .then(res => {
-            paginationData.total = res.data.total
-            dataSource.value = res.data.items
-          })
-          .catch(() => {})
-          .finally(() => {
-            tableData.loading = false
-          })
 
         return true
       },
-      handleCurrentChange: pageNum => {
-        methods.getData()
+      handleCurrentChange: currentPage => {
+        pageNum.value = currentPage
+        return methods.getData()
       },
-      handleSizeChange: size => {
-        paginationData.size = size
+      handleSizeChange: pageSize => {
+        size.value = pageSize
+        pageNum.value = 1
 
-        methods.getData()
+        return methods.getData()
       },
       sortChange: sortData => {
-        if (sortData.order) {
-          queryParams.sorter = {
-            order: sortData.order,
-            sort: sortData.prop
-          }
-        } else {
-          queryParams.sorter = {}
-        }
+        queryParams.sorter = sortData.order
+          ? {
+              order: sortData.order,
+              sort: sortData.prop
+            }
+          : {}
 
-        methods.getData()
+        pageNum.value = 1
+        return methods.getData()
       },
       // 刷新 不更改分页
       refresh: async (query, filters) => {
         queryParams.query = query
         queryParams.filters = filters
 
-        await methods.getData()
-        return true
+        return await methods.getData()
       },
       // 重置 第一页
       reset: async (query, filters) => {
-        paginationData.pageNum = 1
+        pageNum.value = 1
         queryParams.query = query
         queryParams.filters = filters
 
-        await methods.getData()
-
-        return true
+        return await methods.getData()
       },
       getSelectionRows: () => {
-        return tableData.tableRef.getSelectionRows()
+        return tableRef.value?.getSelectionRows() || []
       },
       toggleRowSelection: row => {
-        return tableData.tableRef.toggleRowSelection(row, undefined)
+        return tableRef.value?.toggleRowSelection(row, undefined)
       }
     })
 
@@ -202,8 +192,12 @@ export default {
 
     return {
       dataSource,
-      ...toRefs(tableData),
-      ...toRefs(paginationData),
+      loading,
+      tableRef,
+      tableSize,
+      pageNum,
+      size,
+      total,
       ...toRefs(methods)
     }
   }
