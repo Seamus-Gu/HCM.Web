@@ -1,9 +1,9 @@
 import request, { download } from '@/utils/request'
-const baseUrl = 'gen/v1/gen-table'
+const baseUrl = 'gen/v1/gen-table/'
 
 export function getGenTableList(query) {
   return request({
-    url: baseUrl + '/list',
+    url: baseUrl + 'list',
     method: 'get',
     params: query
   })
@@ -12,7 +12,7 @@ export function getGenTableList(query) {
 // 根据id获取代码生成表详细信息
 export function getGenTableById(id) {
   return request({
-    url: baseUrl + '/' + id,
+    url: baseUrl + id,
     method: 'get'
   })
 }
@@ -20,7 +20,7 @@ export function getGenTableById(id) {
 // 修改代码生成表
 export function editGenTable(data) {
   return request({
-    url: baseUrl + '/edit',
+    url: baseUrl + 'edit',
     method: 'put',
     data: data
   })
@@ -28,12 +28,12 @@ export function editGenTable(data) {
 
 export function generateCode(query) {
   return request({
-    url: baseUrl + '/generate-code',
+    url: baseUrl + 'generate-code',
     method: 'get',
     params: query
   })
 }
 
 export function exportCode(data) {
-  return download(baseUrl + '/export-code', data, 'code.zip')
+  return download(baseUrl + 'export-code', data, 'code.zip')
 }

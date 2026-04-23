@@ -12,7 +12,8 @@
   "sys-user": {
     "user": "系统用户",
     "user-center": "个人中心",
-    "username": "用户名",
+    "user-name": "用户名",
+    "nike-name": "昵称",
     "password": "密码",
     "old-password": "旧密码",
     "new-password": "新密码",

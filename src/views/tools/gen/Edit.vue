@@ -168,64 +168,6 @@ const columns = [
     name: 'action'
   }
 ]
-
-// 表单配置
-const formSchema = [
-  {
-    label: t('gen.gen-column.name'),
-    name: 'columnName',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.column-type'),
-    name: 'columnType',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.column-desc'),
-    name: 'columnDesc',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.is-nullable'),
-    name: 'isNullable',
-    component: 'switch'
-  },
-  {
-    label: t('gen.gen-column.translation'),
-    name: 'translationKey',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.is-hidden'),
-    name: 'isHidden',
-    component: 'switch'
-  },
-  {
-    label: t('gen.gen-column.is-sort'),
-    name: 'isSort',
-    component: 'switch'
-  },
-  {
-    label: t('gen.gen-column.component-type'),
-    name: 'componentType',
-    component: 'select',
-    props: {
-      options: componentOptions
-    }
-  },
-  {
-    label: t('gen.gen-column.type-length'),
-    name: 'typeLength',
-    component: 'input'
-  },
-  {
-    label: t('gen.gen-column.point'),
-    name: 'point',
-    component: 'input'
-  }
-]
-
 // 校验规则
 const formRules = {}
 //#endregion
@@ -283,11 +225,7 @@ const queryLoad = ref(false)
 const resetLoad = ref(false)
 const tableRef = ref()
 
-// 表单
-const formVisible = ref(false)
-const formTitle = ref(t('common.add') + t('gen.gen-table.name'))
-const confirmLoading = ref(false)
-const formRef = ref()
+const formType = ref(0)
 
 // 表单数据
 const formState = ref({
@@ -301,6 +239,76 @@ const formState = ref({
   componentType: undefined,
   tableId: undefined
 })
+
+// 表单配置
+const formSchema = computed(() => [
+  {
+    label: t('gen.gen-column.name'),
+    name: 'columnName',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.column-type'),
+    name: 'columnType',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.column-desc'),
+    name: 'columnDesc',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.is-nullable'),
+    name: 'isNullable',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-column.translation'),
+    name: 'translationKey',
+    component: 'input'
+  },
+  {
+    label: t('gen.gen-column.is-hidden'),
+    name: 'isHidden',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-column.is-sort'),
+    name: 'isSort',
+    component: 'switch'
+  },
+  {
+    label: t('gen.gen-column.component-type'),
+    name: 'componentType',
+    component: 'select',
+    visible: formState.value.isHidden === false,
+    props: {
+      options: componentOptions,
+      onChange: val => {
+        formType.value = val
+      }
+    }
+  },
+  {
+    label: t('gen.gen-column.type-length'),
+    name: 'typeLength',
+    component: 'input',
+    visible: false
+    // visible: formType.value === 1
+  },
+  {
+    label: t('gen.gen-column.point'),
+    name: 'point',
+    component: 'input',
+    visible: false
+  }
+])
+
+// 表单
+const formVisible = ref(false)
+const formTitle = ref(t('common.add') + t('gen.gen-table.name'))
+const confirmLoading = ref(false)
+const formRef = ref()
 
 //#endregion
 

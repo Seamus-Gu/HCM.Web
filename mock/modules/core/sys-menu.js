@@ -1,7 +1,7 @@
 const menuRoutes = [
   {
     name: 'system',
-    path: '/system',
+    path: '/core',
     hidden: false,
     component: 'Layout',
     meta: {
@@ -11,7 +11,7 @@ const menuRoutes = [
     children: [
       {
         name: 'user',
-        path: '/system/user',
+        path: '/core/sys-user',
         hidden: false,
         component: 'core/user/index',
         meta: {
@@ -21,7 +21,7 @@ const menuRoutes = [
       },
       {
         name: 'role',
-        path: '/system/role',
+        path: '/core/sys-role',
         hidden: false,
         component: 'core/role/index',
         meta: {
@@ -31,7 +31,7 @@ const menuRoutes = [
       },
       {
         name: 'menu',
-        path: '/system/menu',
+        path: '/core/sys-menu',
         hidden: false,
         component: 'core/menu/index',
         meta: {
@@ -41,7 +41,7 @@ const menuRoutes = [
       },
       {
         name: 'dept',
-        path: '/system/dept',
+        path: '/core/sys-dept',
         hidden: false,
         component: 'core/dept/index',
         meta: {
