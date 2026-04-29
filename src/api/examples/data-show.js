@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-const baseUrl = '/example/dataShow'
+const baseUrl = '/example/data-show'
 
 // 获取列表
 export function getList(query) {

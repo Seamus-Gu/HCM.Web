@@ -1,6 +1,6 @@
 <template>
   <el-tooltip
-     class="s-auto-text"
+    class="s-auto-text"
     v-bind="$attrs"
     :content="contont"
     :disabled="isShow"

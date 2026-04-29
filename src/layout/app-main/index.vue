@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TabsView from '../tabsView'
+import TabsView from '../tabs-view'
 
 import useSettingsStore from '@/store/modules/settings'
 import usetabViewStore from '@/store/modules/tabs-view'

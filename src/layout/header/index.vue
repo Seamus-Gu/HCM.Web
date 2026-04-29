@@ -75,7 +75,7 @@ import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Avatar from './Avatar.vue'
 
-import ScreenFull from '@/components/screenFull'
+import ScreenFull from '@/components/screen-full'
 
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'

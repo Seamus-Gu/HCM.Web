@@ -18,7 +18,8 @@ function normalizeLocale(locale) {
 
 async function loadLocaleMessages(locale) {
   const targetLocale = normalizeLocale(locale)
-  const loader = localeIndexLoaders[`./${targetLocale}/index.js`]
+  const localeDir = targetLocale.toLowerCase()
+  const loader = localeIndexLoaders[`./${localeDir}/index.js`]
   if (!loader) return {}
   const mod = await loader()
   return mod.default || mod

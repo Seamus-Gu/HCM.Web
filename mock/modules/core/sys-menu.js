@@ -13,7 +13,7 @@ const menuRoutes = [
         name: 'user',
         path: '/core/sys-user',
         hidden: false,
-        component: 'core/user/index',
+        component: 'core/sys-user/index',
         meta: {
           title: '用户管理',
           icon: 'user'
@@ -234,7 +234,7 @@ const menuRoutes = [
                 name: 'Table',
                 path: '/components/data-show/table/default',
                 hidden: false,
-                component: 'components/dataShow/table/index',
+                component: 'components/data-show/table/index',
                 meta: {
                   title: '默认table',
                   icon: 'component'
@@ -244,7 +244,7 @@ const menuRoutes = [
                 name: 'TreeTable',
                 path: '/components/data-show/table/tree',
                 hidden: false,
-                component: 'components/dataShow/table/TreeTable',
+                component: 'components/data-show/table/TreeTable',
                 meta: {
                   title: '树table',
                   icon: 'component'

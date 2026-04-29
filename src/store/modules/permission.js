@@ -1,7 +1,7 @@
 import { constantRoutes } from '@/router'
 import { getRouters } from '@/api/core/menu'
 import Layout from '@/layout/index'
-import ParentView from '@/components/parentView'
+import ParentView from '@/components/parent-view'
 
 const modules = import.meta.glob('./../../views/**/*.vue')
 

@@ -11,9 +11,9 @@
   </div>
 </template>
 <script>
-import SideBar from './sideBar'
+import SideBar from './side-bar'
 import Header from './header'
-import AppMain from './appMain'
+import AppMain from './app-main'
 import Setting from './setting'
 
 import useAppStore from '@/store/modules/app'
