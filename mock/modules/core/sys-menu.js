@@ -120,102 +120,102 @@ const menuRoutes = [
     ]
   },
   {
-    name: 'examples',
-    path: '/examples',
+    name: 'component',
+    path: '/components',
     hidden: false,
     component: 'Layout',
     alwaysShow: true,
     meta: {
       title: '示例',
-      icon: 'example'
+      icon: 'component'
     },
     children: [
       {
-        path: '/examples/basic',
+        path: '/components/basic',
         component: 'ParentView',
         meta: {
           title: '基础组件',
-          icon: 'example'
+          icon: 'component'
         },
         children: [
           {
             name: 'button',
-            path: '/examples/basic/button',
+            path: '/components/basic/button',
             hidden: false,
-            component: 'examples/basic/button/index',
+            component: 'components/basic/button/index',
             meta: {
               title: 'Button 按钮',
-              icon: 'example'
+              icon: 'component'
             }
           },
           {
             name: 'color',
-            path: '/examples/basic/color',
+            path: '/components/basic/color',
             hidden: false,
-            component: 'examples/basic/color/index',
+            component: 'components/basic/color/index',
             meta: {
               title: '色彩',
-              icon: 'example'
+              icon: 'component'
             }
           },
           {
             name: 'layout',
-            path: '/examples/basic/layout',
+            path: '/components/basic/layout',
             hidden: false,
-            component: 'examples/basic/layout/index',
+            component: 'components/basic/layout/index',
             meta: {
               title: '布局',
-              icon: 'example'
+              icon: 'component'
             }
           }
         ]
       },
       {
-        path: '/examples/form',
+        path: '/components/form',
         component: 'ParentView',
         meta: {
           title: '表单组件',
-          icon: 'example'
+          icon: 'component'
         },
         children: [
           {
             name: 'form',
-            path: '/examples/form/index',
+            path: '/components/form/index',
             hidden: false,
-            component: 'examples/form/form/index',
+            component: 'components/form/form/index',
             meta: {
               title: 'Form 表单',
-              icon: 'example'
+              icon: 'component'
             }
           },
           {
             name: 'FormContent',
-            path: '/examples/form/form-content',
+            path: '/components/form/form-content',
             hidden: false,
-            component: 'examples/form/form/FormContent',
+            component: 'components/form/form/FormContent',
             meta: {
               title: 'Form 表单内容',
-              icon: 'example'
+              icon: 'component'
             }
           },
           {
             name: 'input',
-            path: '/examples/form/input',
+            path: '/components/form/input',
             hidden: false,
-            component: 'examples/form/input/index',
+            component: 'components/form/input/index',
             meta: {
               title: 'Input 输入框',
-              icon: 'example'
+              icon: 'component'
             }
           }
         ]
       },
       {
-        path: '/examples/data-show',
+        path: '/components/data-show',
         component: 'ParentView',
         meta: {
           title: '数据展示',
-          icon: 'example'
+          icon: 'component'
         },
         children: [
           {
@@ -227,27 +227,27 @@ const menuRoutes = [
             alwaysShow: true,
             meta: {
               title: 'Table',
-              icon: 'example'
+              icon: 'component'
             },
             children: [
               {
                 name: 'Table',
-                path: '/examples/data_show/table/default',
+                path: '/components/data-show/table/default',
                 hidden: false,
-                component: 'examples/dataShow/table/index',
+                component: 'components/dataShow/table/index',
                 meta: {
                   title: '默认table',
-                  icon: 'example'
+                  icon: 'component'
                 }
               },
               {
                 name: 'TreeTable',
-                path: '/examples/data_show/table/tree',
+                path: '/components/data-show/table/tree',
                 hidden: false,
-                component: 'examples/dataShow/table/TreeTable',
+                component: 'components/dataShow/table/TreeTable',
                 meta: {
                   title: '树table',
-                  icon: 'example'
+                  icon: 'component'
                 }
               }
             ]
@@ -255,20 +255,20 @@ const menuRoutes = [
         ]
       },
       {
-        path: '/examples/navigation',
+        path: '/components/navigation',
         component: 'ParentView',
         meta: {
           title: '导航',
-          icon: 'example'
+          icon: 'component'
         },
         children: [
           {
             name: 'Dropdown',
-            path: '/examples/navigation/dropdown',
-            component: 'examples/navigation/dropdown/index',
+            path: '/components/navigation/dropdown',
+            component: 'components/navigation/dropdown/index',
             meta: {
               title: '下拉菜单',
-              icon: 'example'
+              icon: 'component'
             }
           }
         ]

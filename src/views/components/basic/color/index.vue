@@ -1,12 +1,13 @@
 <template>
   <div class="example-color-container">
-    <el-card :class="{ 'background-dark': darkVal }">
-      <el-row>
-        <el-switch v-model="darkVal" @change="changeTheme" />
-      </el-row>
-      <el-row style="margin-top: 16px" justify="center">
-        <template v-for="item in coreList">
-          <el-col :span="8" class="color-item">
+    <s-panel :class="{ 'background-dark': darkVal }">
+      <s-row justify="center" align="middle">
+        切换背景
+        <s-switch v-model="darkVal" @change="changeTheme" />
+      </s-row>
+      <s-row style="margin-top: 16px" justify="center">
+        <template v-for="item in colorList">
+          <s-col :span="8" class="color-item">
             <div class="color-palette">
               <div class="color-title">{{ item.title }}</div>
               <div
@@ -28,40 +29,28 @@
                 </div>
               </div>
             </div>
-          </el-col>
+          </s-col>
         </template>
-      </el-row>
-    </el-card>
+      </s-row>
+    </s-panel>
   </div>
 </template>
 
-<script>
-import { coreList, primary, colorList, darkList } from '@/utils/theme'
+<script setup>
+import { primary, colorList } from '@/utils/theme'
+import { generate } from '@/utils/color'
 
-export default {
-  setup() {
-    const darkVal = ref(false)
-    const dataVal = ref(colorList)
+const darkVal = ref(false)
+const dataVal = ref({})
 
-    const methods = reactive({
-      changeTheme: val => {
-        if (val) {
-          dataVal.value = darkList
-        } else {
-          dataVal.value = colorList
-        }
-      }
-    })
-
-    return {
-      darkVal,
-      coreList,
-      primary,
-      dataVal,
-      ...toRefs(methods)
-    }
-  }
+function changeTheme() {
+  colorList.forEach(element => {
+    const colors = generate(element.color, darkVal.value)
+    dataVal.value[element.name] = colors
+  })
 }
+
+changeTheme()
 </script>
 
 <style lang="scss" scopped>

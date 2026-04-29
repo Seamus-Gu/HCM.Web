@@ -32,12 +32,6 @@ const colorList = [
 
 export { primary, colorList }
 
-function getBoxShadow(theme) {
-  const color = boxShadow[theme]
-
-  return `rgba(${color}, 0.4) 0 14px 26px -12px,rgba(${color}, 0.15) 0 4px 23px 0,rgba(${color}, 0.2) 0 8px 10px -5px`
-}
-
 export function getThemeColor(theme) {
   return primary[theme.name]
 }
