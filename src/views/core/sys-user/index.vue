@@ -75,12 +75,55 @@ import {
   removeSysUser
 } from '@/api/core/sys-user'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const { proxy } = getCurrentInstance()
 //#endregion
 
 //#region 查询列
-const querySchema = []
+const querySchema = [
+  {
+    label: t('core.sys-user.user-name'),
+    name: 'userName',
+    component: 'input'
+  },
+  {
+    label: t('core.sys-user.nick-name'),
+    name: 'nickName',
+    component: 'input'
+  },
+  {
+    label: t('core.sys-user.phone-number'),
+    name: 'phoneNumber',
+    component: 'input'
+  },
+  {
+    label: t('core.sys-user.user-status'),
+    name: 'userStatus',
+    component: 'input',
+    props: {
+      options: [
+        {
+          value: 0,
+          label: '正常'
+        },
+        {
+          value: 1,
+          label: '禁用'
+        }
+      ]
+    }
+  },
+  {
+    label: '创建时间',
+    name: 'createTime',
+    component: 'datePicker',
+    md: 24,
+    lg: 12,
+    props: {
+      type: 'daterange'
+    }
+  }
+]
 //#endregion
 
 //#region 列 && 表单
@@ -92,13 +135,8 @@ const columns = [
     sortable: true
   },
   {
-    label: t('core.sys-user.nike-name'),
+    label: t('core.sys-user.nick-name'),
     name: 'nickName',
-    sortable: true
-  },
-  {
-    label: t('core.sys-user.user-type'),
-    name: 'userType',
     sortable: true
   },
   {
@@ -112,8 +150,8 @@ const columns = [
     sortable: true
   },
   {
-    label: t('core.sys-user.password'),
-    name: 'password',
+    label: t('core.sys-user.user-status'),
+    name: 'userStatus',
     sortable: true
   },
   {

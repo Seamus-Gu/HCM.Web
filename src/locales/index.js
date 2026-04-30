@@ -57,4 +57,8 @@ export async function setLocale(locale) {
   return targetLocale
 }
 
+export function t(key) {
+  return i18n.global.t(key)
+}
+
 export default i18n

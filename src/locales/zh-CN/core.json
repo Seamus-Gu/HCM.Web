@@ -10,26 +10,12 @@
     "id-card": "请输入正确的身份证号码"
   },
   "sys-user": {
-    "user": "系统用户",
-    "user-center": "个人中心",
     "user-name": "用户名",
-    "nike-name": "昵称",
-    "password": "密码",
-    "old-password": "旧密码",
-    "new-password": "新密码",
-    "confirm-password": "确认密码",
-    "nickname": "昵称",
-    "real-name": "真实姓名",
-    "phone": "手机号",
+    "nick-name": "昵称",
     "email": "邮箱",
-    "avatar": "头像",
-    "role": "角色",
-    "department": "部门",
-    "login-success": "登录成功",
-    "login-failed": "登录失败，请检查账号密码",
-    "account-disabled": "账号已被禁用",
-    "forget-password": "忘记密码",
-    "remember-me": "记住我"
+    "phone-number": "手机号",
+    "user-status": "用户状态",
+    "password": "密码"
   },
   "table": {
     "selection": "勾选",

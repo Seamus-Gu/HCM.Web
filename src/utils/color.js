@@ -163,5 +163,5 @@ export function generate(color, isDark) {
 export function getButotonBoxShadow(color) {
   const rgb = hexToRgb(color)
 
-  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4) 0 14px 26px -12px,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.15) 0 4px 23px 0,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2) 0 8px 10px -5px`
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4) 0 14px 26px -12px,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.15) 0 4px 23px 0,rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2) 0 6px 8px -5px`
 }
